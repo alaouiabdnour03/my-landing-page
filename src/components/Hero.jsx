@@ -42,7 +42,7 @@ const Hero = () => {
 
           <div className="hidden lg:flex justify-end items-end relative h-full">
             <img
-              src="/hero-image.png"
+              src={`${import.meta.env.BASE_URL}hero-image.png`}
               alt="Experts LAMEC"
               width={600}
               height={675}
