@@ -7,26 +7,43 @@ const Confirmation = () => {
   const type = searchParams.get("type"); // "contact" or "sondage"
   const isContact = type === "contact";
 
-  // Fire GTM conversion event when user lands on this page
+  // Fire GTM dataLayer event + Google Ads conversion on page load
   useEffect(() => {
     window.dataLayer = window.dataLayer || [];
 
     if (isContact) {
-      // Conversion: Contact form submitted
+      // GTM event
       window.dataLayer.push({
         event: "conversion_contact",
         conversion_type: "contact_form",
         conversion_label: "Contact Form Submitted",
       });
+      // Google Ads conversion
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: "AW-17899968763/d94KCPjywpYcEPuxr9dC",
+          value: 1.0,
+          currency: "MAD",
+        });
+      }
     } else {
-      // Conversion: Sondage/Booking completed
+      // GTM event
       window.dataLayer.push({
         event: "conversion_sondage",
         conversion_type: "booking",
         conversion_label: "Sondage Booking Completed",
       });
+      // Google Ads conversion
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: "AW-17899968763/d94KCPjywpYcEPuxr9dC",
+          value: 1.0,
+          currency: "MAD",
+        });
+      }
     }
   }, [isContact]);
+
 
   return (
     <div className="min-h-screen bg-lamec-dark flex items-center justify-center px-6 relative overflow-hidden">
