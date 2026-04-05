@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CheckCircle, Check, ChevronLeft, ChevronRight, Globe, User, Briefcase, Building2, MapPin, Clock, Calendar } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 const questionDefs = [
   {
@@ -52,6 +53,7 @@ const questionDefs = [
 
 const SondageSection = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [completed, setCompleted] = useState(false);
@@ -85,6 +87,7 @@ const SondageSection = () => {
 
   const handleBook = () => {
     setBooked(true);
+    navigate("/confirmation?type=sondage");
   };
 
   const isContactValid = contactInfo.name.trim() && contactInfo.phone.trim();

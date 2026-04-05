@@ -1,15 +1,18 @@
 import { Phone, Mail, MapPin, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 const ContactSection = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
+    navigate("/confirmation?type=contact");
   };
 
   return (
