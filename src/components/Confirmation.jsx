@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CheckCircle, ArrowLeft, Phone } from "lucide-react";
 import { useSearchParams, Link } from "react-router-dom";
 
 const Confirmation = () => {
   const [searchParams] = useSearchParams();
   const type = searchParams.get("type"); // "contact" or "sondage"
-
   const isContact = type === "contact";
+
+  // Fire GTM conversion event when user lands on this page
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+
+    if (isContact) {
+      // Conversion: Contact form submitted
+      window.dataLayer.push({
+        event: "conversion_contact",
+        conversion_type: "contact_form",
+        conversion_label: "Contact Form Submitted",
+      });
+    } else {
+      // Conversion: Sondage/Booking completed
+      window.dataLayer.push({
+        event: "conversion_sondage",
+        conversion_type: "booking",
+        conversion_label: "Sondage Booking Completed",
+      });
+    }
+  }, [isContact]);
 
   return (
     <div className="min-h-screen bg-lamec-dark flex items-center justify-center px-6 relative overflow-hidden">
