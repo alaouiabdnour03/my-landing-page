@@ -86,6 +86,21 @@ const SondageSection = () => {
   };
 
   const handleBook = () => {
+    // Send all survey data + contact info to email via Formsubmit AJAX
+    fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        _subject: "📋 Nouvelle réservation — LAMEC Sondage",
+        Nom: contactInfo.name,
+        Téléphone: contactInfo.phone,
+        Services: projectTypes.join(", "),
+        Résidence: answers.residency || "—",
+        Activité: answers.activity || "—",
+        Domiciliation: answers.domiciliation || "—",
+        Délai: answers.timeline || "—",
+      }),
+    }).catch(() => {}); // never block the user
     setBooked(true);
     navigate("/confirmation?type=sondage");
   };

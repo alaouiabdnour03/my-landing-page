@@ -9,8 +9,20 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    // Send to Formsubmit.co (fire and don't wait — UX stays instant)
+    fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        _subject: "🔔 Nouveau message — LAMEC Contact",
+        Nom: formData.name,
+        Téléphone: formData.phone,
+        Email: formData.email || "Non renseigné",
+        Message: formData.message || "Non renseigné",
+      }),
+    }).catch(() => {}); // never block the user even if the request fails
     setSubmitted(true);
     navigate("/confirmation?type=contact");
   };
