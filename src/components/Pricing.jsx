@@ -32,7 +32,7 @@ const PricingSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section id="packs" className="py-20 bg-background">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
