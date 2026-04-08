@@ -1,11 +1,20 @@
 import React from 'react';
 import { ArrowDown, Users } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const scrollTo = (id) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 };
 
+const openTawk = () => {
+  if (typeof window.Tawk_API !== 'undefined') {
+    window.Tawk_API.toggle();
+  }
+};
+
 const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="bg-lamec-yellow text-lamec-dark relative overflow-hidden min-h-[80vh] flex items-center">
       {/* Decorative Circles */}
@@ -18,14 +27,14 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <div className="animate-fade-in-up md:mt-0 mt-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-lamec-dark leading-[1.2] mb-6">
-              Pack Complet SARL :<br />
-              <span className="font-black">Création, Domiciliation,</span> Comptabilité.<br />
-              À partir de seulement<br />
+              {t('hero.title1')}<br />
+              <span className="font-black">{t('hero.title2')}</span> {t('hero.title3')}<br />
+              {t('hero.from')}<br />
               <span className="font-black text-4xl md:text-5xl lg:text-6xl">999 DH</span>
-              <span className="text-xl md:text-2xl font-medium">/mois</span>
+              <span className="text-xl md:text-2xl font-medium">{t('hero.month')}</span>
             </h1>
             <p className="text-base md:text-lg text-lamec-dark/80 mb-8 max-w-xl leading-relaxed font-medium">
-              Tout pour lancer votre activité en toute simplicité. Disponible 24/7/365. Transparent et sans engagement. Votre succès commence ici.
+              {t('hero.subtitle')}
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -33,13 +42,13 @@ const Hero = () => {
                 onClick={() => scrollTo('packs')}
                 className="inline-flex items-center gap-2 bg-lamec-dark text-white px-7 py-4 rounded-full font-semibold text-base hover:opacity-90 transition-opacity whitespace-nowrap"
               >
-                Découvrir nos Packs <ArrowDown className="w-5 h-5" />
+                {t('hero.cta_packs')} <ArrowDown className="w-5 h-5" />
               </button>
               <button
-                onClick={() => scrollTo('contact')}
+                onClick={openTawk}
                 className="inline-flex items-center gap-2 border-2 border-lamec-dark text-lamec-dark px-7 py-4 rounded-full font-semibold text-base hover:bg-lamec-dark hover:text-lamec-yellow transition-colors whitespace-nowrap"
               >
-                Parler à un Expert <Users className="w-5 h-5" />
+                {t('hero.cta_expert')} <Users className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -55,7 +64,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
     </section>
   );
 };

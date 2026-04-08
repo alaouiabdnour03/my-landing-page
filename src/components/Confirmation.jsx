@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { CheckCircle, ArrowLeft, Phone } from "lucide-react";
 import { useSearchParams, Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Confirmation = () => {
   const [searchParams] = useSearchParams();
+  const { t } = useLanguage();
   const type = searchParams.get("type"); // "contact" or "sondage"
   const isContact = type === "contact";
 
@@ -12,13 +14,11 @@ const Confirmation = () => {
     window.dataLayer = window.dataLayer || [];
 
     if (isContact) {
-      // GTM event
       window.dataLayer.push({
         event: "conversion_contact",
         conversion_type: "contact_form",
         conversion_label: "Contact Form Submitted",
       });
-      // Google Ads conversion
       if (typeof window.gtag === "function") {
         window.gtag("event", "conversion", {
           send_to: "AW-17899968763/d94KCPjywpYcEPuxr9dC",
@@ -27,13 +27,11 @@ const Confirmation = () => {
         });
       }
     } else {
-      // GTM event
       window.dataLayer.push({
         event: "conversion_sondage",
         conversion_type: "booking",
         conversion_label: "Sondage Booking Completed",
       });
-      // Google Ads conversion
       if (typeof window.gtag === "function") {
         window.gtag("event", "conversion", {
           send_to: "AW-17899968763/d94KCPjywpYcEPuxr9dC",
@@ -43,7 +41,6 @@ const Confirmation = () => {
       }
     }
   }, [isContact]);
-
 
   return (
     <div className="min-h-screen bg-lamec-dark flex items-center justify-center px-6 relative overflow-hidden">
@@ -59,20 +56,23 @@ const Confirmation = () => {
 
           {/* Title */}
           <h1 className="text-3xl font-black text-lamec-dark mb-4 uppercase tracking-wide">
-            {isContact ? "Message envoyé !" : "Réservé !"}
+            {isContact ? t('confirm.contact_title') : t('confirm.sondage_title')}
           </h1>
 
           {/* Message */}
           <p className="text-gray-500 font-medium leading-relaxed mb-8 max-w-sm mx-auto">
-            {isContact
-              ? "Merci pour votre message. Notre équipe vous contactera dans les plus brefs délais."
-              : "Nous reviendrons vers vous très rapidement. Notre expert vous contactera sous 24h."}
+            {isContact ? t('confirm.contact_msg') : t('confirm.sondage_msg')}
           </p>
 
-          {/* Contact Info */}
+          {/* Phone CTA */}
           <div className="bg-lamec-dark/5 rounded-2xl p-6 mb-8">
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Besoin urgent ?</p>
-            <a href="tel:+212602653893" className="flex items-center justify-center gap-3 text-lamec-dark font-bold text-lg hover:text-lamec-yellow transition-colors">
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">{t('confirm.urgent')}</p>
+            <a
+              href="https://wa.me/212602653893"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 text-lamec-dark font-bold text-lg hover:text-lamec-yellow transition-colors"
+            >
               <Phone className="w-5 h-5" />
               +212 6 02 65 38 93
             </a>
@@ -84,7 +84,7 @@ const Confirmation = () => {
             className="inline-flex items-center gap-2 bg-lamec-yellow text-lamec-dark px-8 py-4 rounded-full font-bold text-sm hover:bg-yellow-400 transition-colors shadow-lg uppercase tracking-wider"
           >
             <ArrowLeft className="w-4 h-4" />
-            Retour à l'accueil
+            {t('confirm.back')}
           </Link>
         </div>
 
