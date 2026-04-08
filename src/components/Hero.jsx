@@ -1,5 +1,9 @@
 import React from 'react';
-import { ArrowDown, Users, Phone } from "lucide-react";
+import { ArrowDown, Users } from "lucide-react";
+
+const scrollTo = (id) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+};
 
 const Hero = () => {
   return (
@@ -25,18 +29,18 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a
-                href="#packs"
+              <button
+                onClick={() => scrollTo('packs')}
                 className="inline-flex items-center gap-2 bg-lamec-dark text-white px-7 py-4 rounded-full font-semibold text-base hover:opacity-90 transition-opacity whitespace-nowrap"
               >
                 Découvrir nos Packs <ArrowDown className="w-5 h-5" />
-              </a>
-              <a
-                href="#contact"
+              </button>
+              <button
+                onClick={() => scrollTo('contact')}
                 className="inline-flex items-center gap-2 border-2 border-lamec-dark text-lamec-dark px-7 py-4 rounded-full font-semibold text-base hover:bg-lamec-dark hover:text-lamec-yellow transition-colors whitespace-nowrap"
               >
                 Parler à un Expert <Users className="w-5 h-5" />
-              </a>
+              </button>
             </div>
           </div>
 

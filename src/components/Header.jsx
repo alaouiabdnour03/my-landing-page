@@ -1,6 +1,10 @@
 import React from 'react';
 import { Globe } from "lucide-react";
 
+const scrollTo = (id) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+};
+
 const Header = () => {
   return (
     <header className="w-full bg-lamec-yellow text-lamec-dark py-4 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50">
@@ -24,12 +28,12 @@ const Header = () => {
           </a>
         </div>
 
-        <a
-          href="#contact"
-          className="border-2 border-lamec-dark text-lamec-dark px-5 py-2 rounded-full font-semibold text-sm hover:bg-lamec-dark hover:text-lamec-yellow transition-colors"
+        <button
+          onClick={() => scrollTo('contact')}
+          className="border-2 border-lamec-dark text-lamec-dark px-5 py-2 rounded-full font-semibold text-sm hover:bg-lamec-dark hover:text-lamec-yellow transition-colors cursor-pointer"
         >
           Contact
-        </a>
+        </button>
 
         <div className="flex items-center gap-3">
           <a href="https://www.linkedin.com/company/maison-d-expertise-comptable/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border-2 border-lamec-dark flex items-center justify-center hover:bg-lamec-dark hover:text-lamec-yellow transition-colors">
@@ -53,9 +57,16 @@ const Header = () => {
         <a href="tel:+212602653893" className="flex items-center gap-1 text-lamec-dark font-bold hover:opacity-80 transition-opacity">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
         </a>
+        <button
+          onClick={() => scrollTo('contact')}
+          className="border-2 border-lamec-dark text-lamec-dark px-3 py-1.5 rounded-full font-semibold text-xs hover:bg-lamec-dark hover:text-lamec-yellow transition-colors cursor-pointer"
+        >
+          Contact
+        </button>
       </div>
     </header>
   );
 };
 
 export default Header;
+
