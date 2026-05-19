@@ -7,7 +7,7 @@ const PLANS = [
   {
     name: "STAR Starter",
     description: "L'essentiel pour démarrer votre comptabilité sereinement.",
-    priceYearly: 99,
+    priceYearly: 129,
     priceMonthly: 129,
     ctaLabel: "Commencer",
     features: [
@@ -44,12 +44,12 @@ const PLANS = [
     ctaLabel: "Parlons-en",
     inheritsFrom: "Business",
     features: [
-      "Écritures illimitées",
+      "Factures illimitées",
       "Paie illimitée",
       "Dashboard hebdomadaire",
       "Lettrage temps réel",
       "Certification Expert France",
-      "Support illimité 24/5",
+      "Support illimité",
     ],
   },
 ];
@@ -85,11 +85,10 @@ export const PricingSection = () => {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-60px" }}
                 custom={i}
-                className={`relative flex flex-col rounded-[28px] p-8 transition-all hover:-translate-y-1 ${
-                  isHi
-                    ? "bg-brand-navy text-white shadow-[0_30px_80px_-30px_oklch(0.22_0.05_250/0.55)]"
-                    : "glass-card text-brand-navy"
-                }`}
+                className={`relative flex flex-col rounded-[28px] p-8 transition-all hover:-translate-y-1 ${isHi
+                  ? "bg-brand-navy text-white shadow-[0_30px_80px_-30px_oklch(0.22_0.05_250/0.55)]"
+                  : "glass-card text-brand-navy"
+                  }`}
               >
                 <h3 className={`text-2xl font-bold tracking-tight ${isHi ? "text-brand-green" : "brand-gradient-text"}`}>
                   {plan.name}
@@ -110,11 +109,10 @@ export const PricingSection = () => {
                 <div className={`mt-2 text-xs ${isHi ? "text-white/55" : "text-brand-muted"}`}>€ HT / mois</div>
                 <a
                   href="#diagnostic"
-                  className={`mt-7 inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
-                    isHi
-                      ? "bg-brand-green text-white hover:bg-white hover:text-brand-navy"
-                      : "border-2 border-brand-green-deep text-brand-green-deep hover:bg-brand-green-deep hover:text-white"
-                  }`}
+                  className={`mt-7 inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-colors ${isHi
+                    ? "bg-brand-green text-white hover:bg-white hover:text-brand-navy"
+                    : "border-2 border-brand-green-deep text-brand-green-deep hover:bg-brand-green-deep hover:text-white"
+                    }`}
                 >
                   {plan.ctaLabel}
                 </a>

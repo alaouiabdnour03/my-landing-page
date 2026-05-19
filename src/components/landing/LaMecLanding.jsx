@@ -14,7 +14,7 @@ import iconDatabase from "@/assets/icon-database.svg";
 import iconUsers from "@/assets/icon-users.svg";
 import iconLandmark from "@/assets/icon-landmark.svg";
 import iconNetwork from "@/assets/icon-network.svg";
-import partnerSetupBg from "@/assets/partner-setup-bg.jpg";
+// partner-setup-bg.jpg is served from /public
 
 export const LaMecLanding = () => {
   const { scrollY } = useScroll();
@@ -162,7 +162,7 @@ export const LaMecLanding = () => {
             </Reveal>
             <Reveal delay={1}>
               <div className="relative overflow-hidden rounded-[28px] bg-white p-7 sm:p-9 ring-1 ring-black/5 shadow-xl min-h-[340px]">
-                <img src={partnerSetupBg} alt="" aria-hidden loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-90" />
+                <img src="/partner-setup-bg.jpg" alt="" aria-hidden loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-90" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white via-white/85 to-transparent" />
                 <div className="relative">
                   <h3 className="text-[clamp(24px,2.6vw,34px)] font-bold leading-[1.1] text-brand-navy">
