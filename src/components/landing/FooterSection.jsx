@@ -94,6 +94,12 @@ export const FooterSection = () => {
         <div className={INNER}>
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <div className="flex items-center gap-4">
+              <img
+                src="https://pub-f170a2592d2c4a1485466404c36807be.r2.dev/Tests/logoipsum-415.svg"
+                alt="La MEC Conseils"
+                style={{ filter: "brightness(0)", height: 28 }}
+              />
+              <span className="h-6 w-px bg-black/15" />
               <div className="font-display font-semibold leading-tight">
                 <div className="text-xs tracking-[0.22em] text-brand-navy">LA MEC CONSEILS</div>
                 <div className="text-xs tracking-[0.22em] text-brand-green-deep">L'EXPERTISE DIGITALE</div>
