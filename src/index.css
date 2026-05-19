@@ -5,9 +5,142 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-feature-settings: "ss01";
   }
   body {
-    @apply bg-white text-lamec-text font-sans antialiased;
+    background-color: #fafcfa;
+    color: #1b2a4a;
     margin: 0;
+    -webkit-font-smoothing: antialiased;
   }
+  h1, h2, h3, h4 {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+}
+
+/* ── Mesh gradient backgrounds ── */
+.mesh-bg {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(42% 38% at 18% 28%, rgba(82, 183, 136, 0.55), transparent 65%),
+    radial-gradient(38% 32% at 82% 22%, rgba(45, 106, 79, 0.45), transparent 70%),
+    radial-gradient(48% 42% at 72% 78%, rgba(45, 106, 79, 0.5), transparent 65%),
+    radial-gradient(34% 32% at 28% 82%, rgba(27, 42, 74, 0.35), transparent 70%);
+  filter: blur(50px) saturate(1.05);
+  animation: mesh-drift 22s ease-in-out infinite;
+}
+
+.mesh-bg-2 {
+  position: absolute;
+  inset: -25%;
+  background:
+    radial-gradient(50% 50% at 60% 40%, rgba(45, 106, 79, 0.35), transparent 72%),
+    radial-gradient(40% 40% at 28% 62%, rgba(27, 42, 74, 0.30), transparent 72%);
+  filter: blur(70px);
+  animation: mesh-drift-rev 28s ease-in-out infinite;
+  mix-blend-mode: multiply;
+}
+
+/* ── Grain overlay ── */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.5;
+}
+
+/* ── Shimmer text ── */
+.text-shimmer {
+  background: linear-gradient(90deg, #1b2a4a 0%, #2d6a4f 40%, #52b788 50%, #1b2a4a 60%, #1b2a4a 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* ── Glass card ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(82, 183, 136, 0.18);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.6) inset,
+    0 20px 60px -30px rgba(27, 42, 74, 0.3);
+}
+
+/* ── Brand gradient text ── */
+.brand-gradient-text {
+  background: linear-gradient(120deg, #2d6a4f, #52b788);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Nav cards ── */
+.nav-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px 22px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.nav-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+.nav-card__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-card__title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.nav-card__sub {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+.nav-card__arrow {
+  font-size: 21px;
+  line-height: 1;
+  color: #1b2a4a;
+  transition: transform 0.35s ease;
+}
+.nav-card:hover .nav-card__arrow {
+  transform: translateX(6px);
+}
+
+/* ── Keyframes (also defined in tailwind.config for JIT) ── */
+@keyframes mesh-drift {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  33%  { transform: translate3d(4%,-3%,0) scale(1.08); }
+  66%  { transform: translate3d(-3%,4%,0) scale(0.96); }
+  100% { transform: translate3d(0,0,0) scale(1); }
+}
+
+@keyframes mesh-drift-rev {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  50%  { transform: translate3d(-5%,3%,0) scale(1.1); }
+  100% { transform: translate3d(0,0,0) scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }

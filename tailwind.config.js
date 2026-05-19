@@ -7,45 +7,39 @@ export default {
   theme: {
     extend: {
       colors: {
-        'lamec-yellow': '#ffc800',
-        'lamec-yellow-hover': '#e6b400',
-        'lamec-yellow-light': '#fff4cc',
-        'lamec-dark': '#111111',
-        'lamec-card': '#ffffff',
-        'lamec-gray': '#f9f9f9',
-        'lamec-border': '#eeeeee',
-        'lamec-text': '#333333',
-        'lamec-text-light': '#666666',
-        background: '#ffffff',
-        foreground: '#111111',
-        card: '#ffffff',
-        'card-foreground': '#111111',
-        primary: '#ffc800',
-        'primary-foreground': '#ffffff',
-        muted: '#f5f5f5',
-        'muted-foreground': '#666666',
-        accent: '#ffc800',
-        'accent-foreground': '#111111',
-        border: '#eeeeee',
-        ring: '#ffc800',
+        'brand-green': '#52b788',
+        'brand-green-deep': '#2d6a4f',
+        'brand-green-pale': '#e9f5ef',
+        'brand-navy': '#1b2a4a',
+        'brand-bg': '#fafcfa',
+        'brand-muted': '#6b7280',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ["'DM Sans'", 'system-ui', 'sans-serif'],
+        sans: ["'DM Sans'", 'system-ui', 'sans-serif'],
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+        'mesh-drift': {
+          '0%': { transform: 'translate3d(0,0,0) scale(1)' },
+          '33%': { transform: 'translate3d(4%,-3%,0) scale(1.08)' },
+          '66%': { transform: 'translate3d(-3%,4%,0) scale(0.96)' },
+          '100%': { transform: 'translate3d(0,0,0) scale(1)' },
         },
-        'fade-in-up': {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        }
+        'mesh-drift-rev': {
+          '0%': { transform: 'translate3d(0,0,0) scale(1)' },
+          '50%': { transform: 'translate3d(-5%,3%,0) scale(1.1)' },
+          '100%': { transform: 'translate3d(0,0,0) scale(1)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '100%': { backgroundPosition: '200% 50%' },
+        },
       },
       animation: {
-        float: 'float 3s ease-in-out infinite',
-        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
-      }
+        'mesh-drift': 'mesh-drift 22s ease-in-out infinite',
+        'mesh-drift-rev': 'mesh-drift-rev 28s ease-in-out infinite',
+        shimmer: 'shimmer 6s linear infinite',
+      },
     },
   },
   plugins: [],
