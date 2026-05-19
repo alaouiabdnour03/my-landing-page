@@ -113,16 +113,16 @@ export const LaMecLanding = () => {
             <div className="grid gap-4 sm:grid-cols-2">
               <Reveal className="relative rounded-2xl bg-white p-6 ring-1 ring-black/5 shadow-lg">
                 <div className="flex items-start justify-between gap-3">
-                  <img src={iconDatabase} alt="" className="h-16 w-16 object-contain" />
+                  <img src="/SOLUTION ODOO IC.svg" alt="" className="h-16 w-16 object-contain" />
                   <span className="text-2xl lowercase" style={{ color: "#8F5849", fontFamily: "'Nunito', system-ui, sans-serif", fontWeight: 600 }}>odoo</span>
                 </div>
                 <h4 className="mt-4 font-semibold text-brand-navy">Solution Odoo</h4>
                 <p className="mt-1 text-sm text-brand-muted">Suite tout-en-un modulaire et évolutive pour centraliser vos opérations.</p>
               </Reveal>
               {[
-                { icon: iconLandmark, title: "Localisation France", text: "Plan Comptable Général (PCG) et paramétrage des cotisations." },
-                { icon: iconNetwork, title: "Sync Bancaire", text: "Lien API direct avec vos comptes pour un suivi quotidien des flux." },
-                { icon: iconZero, title: "Zéro Friction", text: "Nous gérons l'intégralité du paramétrage technique et social." },
+                { icon: "/Localisation IC.svg", title: "Localisation France", text: "Plan Comptable Général (PCG) et paramétrage des cotisations." },
+                { icon: "/SNYC IC.svg", title: "Sync Bancaire", text: "Lien API direct avec vos comptes pour un suivi quotidien des flux." },
+                { icon: "/FRICTION IC.svg", title: "Zéro Friction", text: "Nous gérons l'intégralité du paramétrage technique et social." },
               ].map((c, i) => (
                 <Reveal key={c.title} delay={i + 1} className="glass-card rounded-2xl p-6">
                   <div className="mb-4 inline-flex items-center justify-center text-brand-green-deep">
@@ -135,7 +135,7 @@ export const LaMecLanding = () => {
             </div>
             <Reveal delay={2} className="relative">
               <div className="glass-card relative h-full rounded-2xl p-8">
-                <img src={iconUsers} alt="" className="mb-5 h-20 w-20 object-contain" />
+                <img src="/GESTION IC.svg" alt="" className="mb-5 h-20 w-20 object-contain" />
                 <h3 className="mb-4 text-2xl font-bold">Gestion Sociale Intégrée</h3>
                 <ul className="space-y-3">
                   {["Émission des bulletins.", "Déclarations sociales (DSN) et gestion des congés centralisées.", "Cohérence parfaite entre vos données RH et votre comptabilité analytique."].map((t) => (
