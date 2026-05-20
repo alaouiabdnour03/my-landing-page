@@ -15,9 +15,8 @@ const PLANS = [
       "Paie en option",
       "Reporting trimestriel",
       "Lettrage hebdomadaire",
-      "Support email",
-      "Clôture & Fiscalité",
       "Assistance Dépôt",
+      "Support email",
     ],
   },
   {
@@ -33,9 +32,8 @@ const PLANS = [
       "Reporting mensuel",
       "Lettrage quotidien",
       "Cockpit Odoo personnalisé",
-      "Support prioritaire",
-      "Clôture & Fiscalité",
       "Assistance Dépôt",
+      "Support prioritaire",
     ],
   },
   {
