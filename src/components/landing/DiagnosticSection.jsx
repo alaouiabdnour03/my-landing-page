@@ -130,16 +130,16 @@ export const DiagnosticSection = () => {
               {/* Colonne Centrale */}
               <div className="flex flex-col gap-12">
                 <Field number="01" label="Structure / Entreprise" className="md:scale-110 shadow-2xl z-20" featured>
-                  <div className="flex flex-wrap gap-2">
-                    {STRUCTURES.map((s) => (
-                      <Chip key={s} active={structure === s} onClick={() => setStructure(s)}>{s}</Chip>
+                  <div className="grid grid-cols-2 gap-2">
+                    {STRUCTURES.map((s, idx) => (
+                      <Chip key={s} active={structure === s} onClick={() => setStructure(s)} className={`w-full text-[12px] sm:text-[13px] px-1 sm:px-3 py-2 leading-tight min-h-[44px] ${idx === 4 ? "col-span-2" : ""}`}>{s}</Chip>
                     ))}
                   </div>
                 </Field>
                 <Field number="05" label="Niveau de certification">
-                  <div className="flex flex-wrap gap-2">
-                    {CERTIF_LEVELS.map((c) => (
-                      <Chip key={c} active={certif === c} onClick={() => setCertif(c)}>{c}</Chip>
+                  <div className="grid grid-cols-2 gap-2">
+                    {CERTIF_LEVELS.map((c, idx) => (
+                      <Chip key={c} active={certif === c} onClick={() => setCertif(c)} className={`w-full text-[12px] sm:text-[13px] px-1 sm:px-3 py-2 leading-tight min-h-[44px] ${idx === 2 ? "col-span-2" : ""}`}>{c}</Chip>
                     ))}
                   </div>
                 </Field>
