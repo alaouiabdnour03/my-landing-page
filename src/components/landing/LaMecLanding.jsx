@@ -67,17 +67,7 @@ export const LaMecLanding = () => {
             </a>
           </Reveal>
 
-          <Reveal delay={7} className="mt-14 w-full max-w-[460px] flex flex-col gap-3">
-            <a href="#offres" className="nav-card">
-              <div className="nav-card__left">
-                <div>
-                  <div className="nav-card__title">L'Offre STAR</div>
-                  <div className="nav-card__sub">Pilotez votre croissance en 48h</div>
-                </div>
-              </div>
-              <span className="nav-card__arrow">&rsaquo;</span>
-            </a>
-          </Reveal>
+
         </motion.div>
       </section>
 
