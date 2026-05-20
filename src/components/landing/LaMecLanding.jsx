@@ -157,17 +157,19 @@ export const LaMecLanding = () => {
               <p className="mt-5 max-w-[420px] text-brand-muted">Un programme gagnant-gagnant qui crée de la valeur pour chacun.</p>
             </Reveal>
             <Reveal delay={1}>
-              <div className="relative overflow-hidden rounded-[28px] bg-white p-7 sm:p-9 ring-1 ring-black/5 shadow-xl min-h-[340px]">
-                <img src="/partner-setup-bg.jpg" alt="" aria-hidden loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-90" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white via-white/85 to-transparent" />
+              <div className="relative overflow-hidden rounded-[32px] bg-brand-navy p-8 sm:p-10 text-white shadow-[0_40px_120px_-40px_oklch(0.2_0.06_250/0.6)] min-h-[340px] flex flex-col justify-between">
+                <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-brand-green/30 blur-3xl" />
+                <div aria-hidden className="pointer-events-none absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-brand-green-deep/25 blur-3xl" />
                 <div className="relative">
-                  <h3 className="text-[clamp(24px,2.6vw,34px)] font-bold leading-[1.1] text-brand-navy">
-                    Frais de setup 150€ <span className="text-brand-green-deep">offerts</span><br className="hidden sm:inline" /> pour tous nos résidents.
+                  <h3 className="text-[clamp(24px,2.6vw,34px)] font-bold leading-[1.1] text-white">
+                    Frais de setup 150€ <span className="text-brand-green">offerts</span><br className="hidden sm:inline" /> pour tous nos résidents.
                   </h3>
-                  <p className="mt-4 max-w-[440px] text-sm text-brand-muted">Disponible pour toute nouvelle inscription de partenaire éligible au réseau.</p>
-                  <a href="mailto:contact@lameconseil.com" className="group mt-7 inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-2 text-sm font-semibold text-white transition-all hover:bg-brand-green-deep">
+                  <p className="mt-4 max-w-[440px] text-sm text-white/65">Disponible pour toute nouvelle inscription de partenaire éligible au réseau.</p>
+                </div>
+                <div className="relative mt-7">
+                  <a href="mailto:contact@lameconseil.com" className="group inline-flex items-center gap-2 rounded-full bg-brand-green px-6 py-2 text-sm font-semibold text-brand-navy transition-all hover:bg-white">
                     Demander l'offre{" "}
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full ring-1 ring-white/30 transition-transform group-hover:translate-x-0.5 group-hover:ring-brand-navy/30">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full ring-1 ring-brand-navy/15 transition-transform group-hover:translate-x-0.5 group-hover:ring-brand-navy/30">
                       <ArrowRight className="h-5 w-5" />
                     </span>
                   </a>
