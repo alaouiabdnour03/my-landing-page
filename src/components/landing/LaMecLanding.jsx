@@ -165,8 +165,11 @@ export const LaMecLanding = () => {
                     Frais de setup 150€ <span className="text-brand-green-deep">offerts</span><br className="hidden sm:inline" /> pour tous nos résidents.
                   </h3>
                   <p className="mt-4 max-w-[440px] text-sm text-brand-muted">Disponible pour toute nouvelle inscription de partenaire éligible au réseau.</p>
-                  <a href="mailto:contact@lameconseil.com" className="group mt-7 inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-brand-green-deep">
-                    Demander l'offre <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  <a href="mailto:contact@lameconseil.com" className="group mt-7 inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-2 text-sm font-semibold text-white transition-all hover:bg-brand-green-deep">
+                    Demander l'offre{" "}
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full ring-1 ring-white/30 transition-transform group-hover:translate-x-0.5 group-hover:ring-brand-navy/30">
+                      <ArrowRight className="h-5 w-5" />
+                    </span>
                   </a>
                 </div>
               </div>
