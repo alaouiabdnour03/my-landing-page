@@ -27,7 +27,7 @@ const Chip = ({ active, onClick, children }) => (
     }`}
   >
     <span>{children}</span>
-    {active && <Check className="h-3.5 w-3.5 text-brand-green" strokeWidth={3} />}
+    {active && <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />}
   </button>
 );
 
