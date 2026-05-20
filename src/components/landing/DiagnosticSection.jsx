@@ -108,32 +108,16 @@ export const DiagnosticSection = () => {
               <div className="absolute bottom-0 left-1/3 h-[320px] w-[320px] rounded-full bg-orange-200/25 blur-[120px]" />
             </div>
 
-            <div className="space-y-12">
-              <div className="grid gap-x-12 gap-y-12 md:grid-cols-3 md:items-center">
+            <div className="grid gap-6 md:grid-cols-3 lg:gap-10 relative z-10">
+              {/* Colonne Gauche */}
+              <div className="flex flex-col gap-8 md:pt-16">
                 <Field number="02" label="Données de volume">
-                  <div className="flex flex-wrap gap-2">
-                    <input type="text" inputMode="numeric" value={factures} onChange={(e) => setFactures(e.target.value)} placeholder="Factures / mois" className={`${inputCls} w-auto`} />
-                    <input type="text" inputMode="numeric" value={effectif} onChange={(e) => setEffectif(e.target.value)} placeholder="Effectif" className={`${inputCls} w-auto`} />
-                    <input type="text" value={ca} onChange={(e) => setCa(e.target.value)} placeholder="CA annuel" className={`${inputCls} w-auto`} />
+                  <div className="flex flex-col gap-3">
+                    <input type="text" inputMode="numeric" value={factures} onChange={(e) => setFactures(e.target.value)} placeholder="Factures / mois" className={inputCls} />
+                    <input type="text" inputMode="numeric" value={effectif} onChange={(e) => setEffectif(e.target.value)} placeholder="Effectif" className={inputCls} />
+                    <input type="text" value={ca} onChange={(e) => setCa(e.target.value)} placeholder="CA annuel" className={inputCls} />
                   </div>
                 </Field>
-                <Field number="01" label="Structure / Entreprise" featured>
-                  <div className="flex flex-wrap gap-2">
-                    {STRUCTURES.map((s) => (
-                      <Chip key={s} active={structure === s} onClick={() => setStructure(s)}>{s}</Chip>
-                    ))}
-                  </div>
-                </Field>
-                <Field number="04" label="Canaux de distribution">
-                  <div className="flex flex-wrap gap-2">
-                    {CHANNELS.map((c) => (
-                      <Chip key={c} active={channels.includes(c)} onClick={() => toggle(channels, setChannels, c)}>{c}</Chip>
-                    ))}
-                  </div>
-                </Field>
-              </div>
-
-              <div className="grid gap-x-12 gap-y-12 md:grid-cols-3 md:items-center">
                 <Field number="03" label="Points de douleur prioritaires">
                   <div className="flex flex-wrap gap-2">
                     {PAIN_POINTS.map((p) => (
@@ -141,10 +125,32 @@ export const DiagnosticSection = () => {
                     ))}
                   </div>
                 </Field>
+              </div>
+
+              {/* Colonne Centrale */}
+              <div className="flex flex-col gap-12">
+                <Field number="01" label="Structure / Entreprise" className="md:scale-110 shadow-2xl z-20" featured>
+                  <div className="flex flex-wrap gap-2">
+                    {STRUCTURES.map((s) => (
+                      <Chip key={s} active={structure === s} onClick={() => setStructure(s)}>{s}</Chip>
+                    ))}
+                  </div>
+                </Field>
                 <Field number="05" label="Niveau de certification">
                   <div className="flex flex-wrap gap-2">
                     {CERTIF_LEVELS.map((c) => (
                       <Chip key={c} active={certif === c} onClick={() => setCertif(c)}>{c}</Chip>
+                    ))}
+                  </div>
+                </Field>
+              </div>
+
+              {/* Colonne Droite */}
+              <div className="flex flex-col gap-8 md:pt-24">
+                <Field number="04" label="Canaux de distribution">
+                  <div className="flex flex-wrap gap-2">
+                    {CHANNELS.map((c) => (
+                      <Chip key={c} active={channels.includes(c)} onClick={() => toggle(channels, setChannels, c)}>{c}</Chip>
                     ))}
                   </div>
                 </Field>
