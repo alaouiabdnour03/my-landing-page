@@ -11,14 +11,14 @@ export const FooterSection = () => {
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <div className="flex items-center gap-4">
               <img
-                src="https://pub-f170a2592d2c4a1485466404c36807be.r2.dev/Tests/logoipsum-415.svg"
+                src="/logo.png"
                 alt="La MEC Conseils"
-                style={{ filter: "brightness(0)", height: 28 }}
+                className="h-12 w-auto object-contain"
               />
-              <span className="h-6 w-px bg-black/15" />
+              <span className="h-10 w-px bg-black/15" />
               <div className="font-display font-semibold leading-tight">
-                <div className="text-xs tracking-[0.22em] text-brand-navy">LA MEC CONSEILS</div>
-                <div className="text-xs tracking-[0.22em] text-brand-green-deep">L'EXPERTISE DIGITALE</div>
+                <div className="text-xs tracking-[0.22em] text-brand-navy">LA MAISON DE</div>
+                <div className="text-xs tracking-[0.22em] text-brand-green-deep">L'EXPERTISE COMPTABLE</div>
               </div>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
