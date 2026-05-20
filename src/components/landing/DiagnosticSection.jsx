@@ -16,23 +16,20 @@ const CERTIF_LEVELS = [
 ];
 const STRUCTURES = ["SAS / SASU", "SARL / EURL", "SA", "Auto-entrepreneur", "Autre"];
 
-const Chip = ({ active, onClick, children, className }) => {
-  const baseClasses = "inline-flex items-center justify-center gap-1.5 rounded-full transition-all duration-200";
-  const stateClasses = active
-    ? "bg-brand-navy text-white shadow-[0_8px_24px_-10px_oklch(0.2_0.06_250/0.6)] ring-1 ring-brand-navy/40"
-    : "bg-white text-brand-navy/[0.76] ring-1 ring-brand-navy/[0.12] shadow-[0_3px_10px_-3px_oklch(0.2_0.06_250/0.08)] hover:bg-brand-green-pale/60 hover:text-brand-navy hover:shadow-[0_6px_16px_-6px_oklch(0.2_0.06_250/0.12)] hover:scale-[1.01]";
-  
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`${baseClasses} ${stateClasses} ${className || "px-4 py-2 text-sm font-medium"}`}
-    >
-      <span>{children}</span>
-      {active && <Check className="h-3.5 w-3.5 text-white shrink-0" strokeWidth={3} />}
-    </button>
-  );
-};
+const Chip = ({ active, onClick, children, className }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={`inline-flex items-center justify-center gap-1 rounded-full text-[13px] sm:text-[14px] transition-all duration-200 ${
+      active
+        ? "bg-brand-navy text-white shadow-[0_8px_24px_-10px_oklch(0.2_0.06_250/0.6)] ring-1 ring-brand-navy/40 font-semibold"
+        : "bg-white text-brand-navy/[0.76] ring-1 ring-brand-navy/[0.12] shadow-[0_3px_10px_-3px_oklch(0.2_0.06_250/0.08)] hover:bg-brand-green-pale/60 hover:text-brand-navy hover:shadow-[0_6px_16px_-6px_oklch(0.2_0.06_250/0.12)] hover:scale-[1.01] font-normal"
+    } ${className ?? ""}`}
+  >
+    <span>{children}</span>
+    {active && <Check className="h-3 w-3 text-white shrink-0" strokeWidth={3.5} />}
+  </button>
+);
 
 const Field = ({ number, label, children, featured, className }) => (
   <div
@@ -124,7 +121,7 @@ export const DiagnosticSection = () => {
                 <Field number="03" label="Points de douleur prioritaires">
                   <div className="grid grid-cols-2 gap-2">
                     {PAIN_POINTS.map((p) => (
-                      <Chip key={p} active={pains.includes(p)} onClick={() => toggle(pains, setPains, p)} className="w-full text-[13px] sm:text-[14px] px-3 py-1.5 leading-tight min-h-[38px] font-medium">{p}</Chip>
+                      <Chip key={p} active={pains.includes(p)} onClick={() => toggle(pains, setPains, p)} className="w-full px-1.5 sm:px-2.5 py-1 leading-tight min-h-[36px]">{p}</Chip>
                     ))}
                   </div>
                 </Field>
@@ -135,14 +132,14 @@ export const DiagnosticSection = () => {
                 <Field number="01" label="Structure / Entreprise" className="md:scale-110 shadow-2xl z-20" featured>
                   <div className="grid grid-cols-2 gap-2">
                     {STRUCTURES.map((s, idx) => (
-                      <Chip key={s} active={structure === s} onClick={() => setStructure(s)} className={`w-full text-[13px] sm:text-[14px] px-3 py-1.5 leading-tight min-h-[38px] font-medium ${idx === 4 ? "col-span-2" : ""}`}>{s}</Chip>
+                      <Chip key={s} active={structure === s} onClick={() => setStructure(s)} className={`w-full px-1.5 sm:px-2.5 py-1 leading-tight min-h-[36px] ${idx === 4 ? "col-span-2" : ""}`}>{s}</Chip>
                     ))}
                   </div>
                 </Field>
                 <Field number="05" label="Niveau de certification">
                   <div className="grid grid-cols-2 gap-2">
                     {CERTIF_LEVELS.map((c, idx) => (
-                      <Chip key={c} active={certif === c} onClick={() => setCertif(c)} className={`w-full text-[13px] sm:text-[14px] px-3 py-1.5 leading-tight min-h-[38px] font-medium ${idx === 2 ? "col-span-2" : ""}`}>{c}</Chip>
+                      <Chip key={c} active={certif === c} onClick={() => setCertif(c)} className={`w-full px-1.5 sm:px-2.5 py-1 leading-tight min-h-[36px] ${idx === 2 ? "col-span-2" : ""}`}>{c}</Chip>
                     ))}
                   </div>
                 </Field>
@@ -153,7 +150,7 @@ export const DiagnosticSection = () => {
                 <Field number="04" label="Canaux de distribution">
                   <div className="grid grid-cols-2 gap-2">
                     {CHANNELS.map((c, idx) => (
-                      <Chip key={c} active={channels.includes(c)} onClick={() => toggle(channels, setChannels, c)} className={`w-full text-[13px] sm:text-[14px] px-3 py-1.5 leading-tight min-h-[38px] font-medium ${idx === 4 ? "col-span-2" : ""}`}>{c}</Chip>
+                      <Chip key={c} active={channels.includes(c)} onClick={() => toggle(channels, setChannels, c)} className={`w-full px-1.5 sm:px-2.5 py-1 leading-tight min-h-[36px] ${idx === 4 ? "col-span-2" : ""}`}>{c}</Chip>
                     ))}
                   </div>
                 </Field>
