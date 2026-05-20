@@ -16,18 +16,18 @@ const CERTIF_LEVELS = [
 ];
 const STRUCTURES = ["SAS / SASU", "SARL / EURL", "SA", "Auto-entrepreneur", "Autre"];
 
-const Chip = ({ active, onClick, children }) => (
+const Chip = ({ active, onClick, children, className }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-all ${
+    className={`inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-all ${
       active
         ? "bg-brand-navy text-white shadow-[0_8px_24px_-10px_oklch(0.2_0.06_250/0.6)] ring-1 ring-brand-navy/40"
         : "bg-white text-brand-navy/70 ring-1 ring-brand-navy/10 hover:bg-brand-green-pale/60 hover:text-brand-navy"
-    }`}
+    } ${className ?? ""}`}
   >
     <span>{children}</span>
-    {active && <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />}
+    {active && <Check className="h-3.5 w-3.5 text-white shrink-0" strokeWidth={3} />}
   </button>
 );
 
@@ -119,9 +119,9 @@ export const DiagnosticSection = () => {
                   </div>
                 </Field>
                 <Field number="03" label="Points de douleur prioritaires">
-                  <div className="flex flex-wrap gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     {PAIN_POINTS.map((p) => (
-                      <Chip key={p} active={pains.includes(p)} onClick={() => toggle(pains, setPains, p)}>{p}</Chip>
+                      <Chip key={p} active={pains.includes(p)} onClick={() => toggle(pains, setPains, p)} className="w-full text-[12px] sm:text-[13px] px-1 sm:px-3 py-2 leading-tight min-h-[44px]">{p}</Chip>
                     ))}
                   </div>
                 </Field>
