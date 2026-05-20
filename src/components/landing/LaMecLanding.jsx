@@ -94,7 +94,7 @@ export const LaMecLanding = () => {
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             <FeatureCard i={0} bareIcon icon={<img src="/icon1.png" alt="" className="h-16 w-16 object-contain" />} title="Zéro Saisie" text="Oubliez la micro-gestion administrative. Nous collectons et traitons vos flux via Odoo quotidiennement." />
             <FeatureCard i={1} bareIcon icon={<img src="/icon2.png" alt="" className="h-16 w-16 object-contain" />} title="Temps Réel" text="Visibilité totale sur votre cash-flow, vos marges et votre trésorerie à l'instant T." />
-            <FeatureCard i={2} bareIcon icon={<img src="/icon3.png" alt="" className="h-16 w-16 object-contain" />} title="Sécurité Totale" text="Conformité fiscale et sociale stricte (France/Maroc), pilotée par nos experts." />
+            <FeatureCard i={2} bareIcon icon={<img src="/icon3.svg" alt="" className="h-16 w-16 object-contain" />} title="Sécurité Totale" text="Conformité fiscale et sociale stricte (France/Maroc), pilotée par nos experts." />
           </div>
         </div>
       </section>
