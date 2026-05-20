@@ -20,10 +20,10 @@ const Chip = ({ active, onClick, children, className }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-all ${
+    className={`inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
       active
         ? "bg-brand-navy text-white shadow-[0_8px_24px_-10px_oklch(0.2_0.06_250/0.6)] ring-1 ring-brand-navy/40"
-        : "bg-white text-brand-navy/[0.76] ring-1 ring-brand-navy/10 hover:bg-brand-green-pale/60 hover:text-brand-navy"
+        : "bg-white text-brand-navy/[0.76] ring-1 ring-brand-navy/[0.12] shadow-[0_3px_10px_-3px_oklch(0.2_0.06_250/0.08)] hover:bg-brand-green-pale/60 hover:text-brand-navy hover:shadow-[0_6px_16px_-6px_oklch(0.2_0.06_250/0.12)] hover:scale-[1.01]"
     } ${className ?? ""}`}
   >
     <span>{children}</span>
