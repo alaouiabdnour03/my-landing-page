@@ -1,86 +1,9 @@
-import React, { useState } from "react";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
-import { Reveal, SectionLabel, SECTION, INNER } from "./Primitives";
-// No team illustration needed
+import React from "react";
+import { INNER } from "./Primitives";
 
 export const FooterSection = () => {
-  const [email, setEmail] = useState("");
-  const [teamSize, setTeamSize] = useState("");
-  const [sent, setSent] = useState(false);
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    // Send via Formsubmit
-    fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        _subject: "🚀 Demande de démo — La MEC Conseils",
-        Email: email,
-        "Taille équipe": teamSize || "Non précisée",
-      }),
-    }).catch(() => {});
-    setSent(true);
-  };
-
   return (
     <>
-      {/* CTA SECTION */}
-      <section className={`relative ${SECTION} overflow-hidden`}>
-        <div className={`${INNER} relative z-10`}>
-          <Reveal>
-            {/* Placeholder image removed */}
-            <div className="relative overflow-hidden rounded-[32px] bg-brand-navy p-[clamp(28px,4vw,56px)] text-white shadow-[0_40px_120px_-40px_oklch(0.2_0.06_250/0.6)]">
-              <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-brand-green/30 blur-3xl" />
-              <div aria-hidden className="pointer-events-none absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-brand-green-deep/25 blur-3xl" />
-
-              <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
-                <div>
-                  <SectionLabel><span className="text-brand-green">Contact</span></SectionLabel>
-                  <h2 className="mt-4 font-display text-[clamp(28px,4vw,44px)] font-semibold leading-[1.05] tracking-[-0.02em]">
-                    Prêt à accélérer votre croissance ?
-                  </h2>
-                  <p className="mt-4 max-w-md text-sm text-white/65">
-                    Échangeons sur vos enjeux et découvrons comment l'Offre STAR peut transformer votre gestion d'entreprise.
-                  </p>
-                </div>
-
-                <form onSubmit={onSubmit} className="flex flex-col gap-3">
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="email@votre-domaine.com"
-                    className="h-12 rounded-full bg-white px-5 text-sm text-brand-navy placeholder:text-brand-navy/40 outline-none ring-1 ring-transparent focus:ring-brand-green"
-                  />
-                  <div className="relative">
-                    <select
-                      value={teamSize}
-                      onChange={(e) => setTeamSize(e.target.value)}
-                      className="h-12 w-full appearance-none rounded-full bg-white/10 px-5 pr-10 text-sm text-white outline-none ring-1 ring-white/15 focus:ring-brand-green"
-                    >
-                      <option value="" className="text-brand-navy">Combien de personnes dans votre équipe ?</option>
-                      <option value="1-5" className="text-brand-navy">1 – 5</option>
-                      <option value="6-20" className="text-brand-navy">6 – 20</option>
-                      <option value="21-50" className="text-brand-navy">21 – 50</option>
-                      <option value="50+" className="text-brand-navy">50+</option>
-                    </select>
-                    <ArrowUpRight className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 rotate-90 text-white/60" />
-                  </div>
-                  <button
-                    type="submit"
-                    className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand-green px-7 text-sm font-semibold text-brand-navy transition-all hover:bg-white"
-                  >
-                    {sent ? "Envoyé ✓" : "Demander une démo"}
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </button>
-                </form>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       {/* FOOTER */}
       <footer className="relative border-t border-brand-navy/10 bg-white px-[clamp(20px,5vw,80px)] py-10">
