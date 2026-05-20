@@ -148,9 +148,9 @@ export const DiagnosticSection = () => {
               {/* Colonne Droite */}
               <div className="flex flex-col gap-8 md:pt-24">
                 <Field number="04" label="Canaux de distribution">
-                  <div className="flex flex-wrap gap-2">
-                    {CHANNELS.map((c) => (
-                      <Chip key={c} active={channels.includes(c)} onClick={() => toggle(channels, setChannels, c)}>{c}</Chip>
+                  <div className="grid grid-cols-2 gap-2">
+                    {CHANNELS.map((c, idx) => (
+                      <Chip key={c} active={channels.includes(c)} onClick={() => toggle(channels, setChannels, c)} className={`w-full text-[12px] sm:text-[13px] px-1 sm:px-3 py-2 leading-tight min-h-[44px] ${idx === 4 ? "col-span-2" : ""}`}>{c}</Chip>
                     ))}
                   </div>
                 </Field>
