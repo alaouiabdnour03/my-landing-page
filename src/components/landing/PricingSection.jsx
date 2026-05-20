@@ -27,7 +27,7 @@ const PLANS = [
     ctaLabel: "Choisir Business",
     inheritsFrom: "Starter",
     features: [
-      "Tenue comptable (50 factures)",
+      "Tenue comptable",
       "Paie incluse — 5 salariés",
       "Reporting mensuel",
       "Lettrage quotidien",
