@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ArrowUpRight, ArrowRight, Mail } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Reveal, SectionLabel, SECTION, INNER } from "./Primitives";
-import teamIllustration from "@/assets/team-illustration.png";
+// No team illustration needed
 
 export const FooterSection = () => {
   const [email, setEmail] = useState("");
@@ -29,14 +29,7 @@ export const FooterSection = () => {
       <section className={`relative ${SECTION} overflow-hidden`}>
         <div className={`${INNER} relative z-10`}>
           <Reveal>
-            <div className="relative">
-              <img
-                src={teamIllustration}
-                alt="Équipe La MEC"
-                className="pointer-events-none relative z-10 mx-auto -mb-6 block w-full max-w-[920px] select-none object-contain"
-                style={{ maxHeight: 180 }}
-              />
-            </div>
+            {/* Placeholder image removed */}
             <div className="relative overflow-hidden rounded-[32px] bg-brand-navy p-[clamp(28px,4vw,56px)] text-white shadow-[0_40px_120px_-40px_oklch(0.2_0.06_250/0.6)]">
               <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-brand-green/30 blur-3xl" />
               <div aria-hidden className="pointer-events-none absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-brand-green-deep/25 blur-3xl" />
@@ -107,7 +100,7 @@ export const FooterSection = () => {
             </div>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
               <a href="mailto:contact@lameconseil.com" className="inline-flex items-center gap-2 text-sm text-brand-navy/70 transition-colors hover:text-brand-green-deep">
-                <Mail className="h-4 w-4" /> contact@lameconseil.com
+                contact@lameconseil.com
               </a>
               <a href="https://www.linkedin.com/company/maison-d-expertise-comptable/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-navy text-white transition-colors hover:bg-brand-green-deep">
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
