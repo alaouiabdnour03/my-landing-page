@@ -16,6 +16,8 @@ const PLANS = [
       "Reporting trimestriel",
       "Lettrage hebdomadaire",
       "Support email",
+      "Clôture & Fiscalité",
+      "Assistance Dépôt",
     ],
   },
   {
@@ -30,9 +32,10 @@ const PLANS = [
       "Paie incluse — 5 salariés",
       "Reporting mensuel",
       "Lettrage quotidien",
-      "Analyse mensuelle CFO",
       "Cockpit Odoo personnalisé",
       "Support prioritaire",
+      "Clôture & Fiscalité",
+      "Assistance Dépôt",
     ],
   },
   {
@@ -49,6 +52,7 @@ const PLANS = [
       "Dashboard hebdomadaire",
       "Lettrage temps réel",
       "Certification Expert France",
+      "Cockpit Odoo personnalisé",
       "Support illimité",
     ],
   },
