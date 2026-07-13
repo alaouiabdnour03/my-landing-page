@@ -39,24 +39,27 @@ export const LaMecLanding = () => {
             </div>
           </Reveal>
 
-          <Reveal delay={2} className="mt-12 text-xs font-semibold uppercase tracking-[0.22em] text-brand-navy/80">
-            Directeur Financier BPO &amp; Odoo
+          <Reveal delay={2} className="inline-block mt-12 bg-amber-100/80 text-amber-800 border border-amber-200/50 rounded-lg px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider w-fit">
+            Partenariat de Croissance 2026
           </Reveal>
 
-          <Reveal delay={3} className="mt-5 max-w-[820px]">
-            <h1 className="font-display text-[clamp(38px,6vw,76px)] font-bold leading-[1.05]">
-              L'Offre <span className="brand-gradient-text">STAR</span> :
+          <Reveal delay={3} className="mt-6 max-w-[850px]">
+            <h1 className="font-display text-[clamp(36px,5.5vw,70px)] font-bold leading-[1.1] text-brand-navy">
+              Le Nouveau Moteur de <span className="brand-gradient-text">Croissance</span>
               <br />
-              <span className="text-shimmer">Pilotez votre Croissance</span>
+              de Votre Activité Touristique
             </h1>
           </Reveal>
 
-          <Reveal delay={4} className="mt-6 max-w-[560px] text-lg text-brand-muted">
-            Libérez votre potentiel avec notre solution intégrée
-            <br />Gestion, Fiscalité &amp; Paie.
+          <Reveal delay={4} className="mt-6 max-w-[620px] text-lg text-brand-muted leading-relaxed">
+            Connectez votre offre locale de tourisme et d'animation aux plateformes mondiales. Maximisez vos profits en direct.
           </Reveal>
 
-          <Reveal delay={5} className="mt-10">
+          <Reveal delay={5} className="mt-8">
+            <div className="w-16 h-1 bg-amber-500 rounded-full" />
+          </Reveal>
+
+          <Reveal delay={6} className="mt-10">
             <div className="flex flex-wrap items-center gap-3">
               <span className="font-display text-sm font-bold tracking-wider text-brand-navy">HAKIMI IBRAHIMI</span>
               <span className="text-brand-green">|</span>
