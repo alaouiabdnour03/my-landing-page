@@ -39,11 +39,9 @@ export const LaMecLanding = () => {
             </div>
           </Reveal>
 
-          <Reveal delay={2} className="inline-block mt-12 bg-amber-100/80 text-amber-800 border border-amber-200/50 rounded-lg px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider w-fit">
-            Partenariat de Croissance 2026
-          </Reveal>
 
-          <Reveal delay={3} className="mt-6 max-w-[850px]">
+
+          <Reveal delay={3} className="mt-12 max-w-[850px]">
             <h1 className="font-display text-[clamp(36px,5.5vw,70px)] font-bold leading-[1.1] text-brand-navy">
               Le Nouveau Moteur de <span className="brand-gradient-text">Croissance</span>
               <br />
@@ -74,21 +72,80 @@ export const LaMecLanding = () => {
         </motion.div>
       </section>
 
-      {/* ───────── EXPERTISE ───────── */}
+      {/* ───────── LE COÛT DE L'INACTION ───────── */}
       <section className={`relative ${SECTION}`}>
         <div className={INNER}>
-          <Reveal><SectionLabel>Notre Promesse</SectionLabel></Reveal>
-          <Reveal delay={1} className="mt-4 max-w-[900px]">
-            <h2 className="text-[clamp(32px,4.5vw,56px)] font-bold leading-[1.05]">
-              Expertise Humaine,<br />
-              <span className="brand-gradient-text">Puissance Digitale</span>
-            </h2>
+          <Reveal>
+            <div className="flex items-center gap-4">
+              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
+              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
+                Le Coût de l'Inaction Commerciale
+              </h2>
+            </div>
           </Reveal>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            <FeatureCard i={0} bareIcon icon={<img src="/icon1.png" alt="" className="h-16 w-16 object-contain" />} title="Zéro Saisie" text="Oubliez la micro-gestion administrative. Nous collectons et traitons vos flux via Odoo quotidiennement." />
-            <FeatureCard i={1} bareIcon icon={<img src="/icon2.png" alt="" className="h-16 w-16 object-contain" />} title="Temps Réel" text="Visibilité totale sur votre cash-flow, vos marges et votre trésorerie à l'instant T." />
-            <FeatureCard i={2} bareIcon icon={<img src="/icon3.png" alt="" className="h-16 w-16 object-contain" />} title="Sécurité Totale" text="Conformité fiscale et sociale stricte (France/Maroc), pilotée par nos experts." />
-          </div>
+
+          <Reveal delay={1} className="mt-16 grid gap-12 md:grid-cols-2 items-center">
+            {/* Big stat left */}
+            <div className="text-center md:text-left">
+              <div className="text-[clamp(100px,18vw,160px)] font-black leading-none text-amber-500 tracking-tight">
+                85%
+              </div>
+              <p className="mt-4 text-xl font-semibold text-brand-navy">
+                des demandes sans réponse sont perdues
+              </p>
+            </div>
+
+            {/* Right content */}
+            <div>
+              <h3 className="text-[clamp(20px,2.5vw,26px)] font-bold text-brand-navy mb-4">
+                L'Exigence Absolue d'Immédiateté
+              </h3>
+              <p className="text-brand-navy/80 leading-relaxed text-sm sm:text-base">
+                En 2026, <strong>85% des voyageurs et sportifs</strong> abandonnent leur processus d'achat si leur premier contact (WhatsApp, Instagram, Web) ne reçoit pas de réponse qualifiée en moins de 30 secondes.
+              </p>
+              <p className="mt-4 text-brand-navy/80 leading-relaxed text-sm sm:text-base">
+                De plus, les commissions des agences en ligne internationales (OTAs) s'accaparent entre <strong>15% et 25%</strong> de votre chiffre d'affaires, rognant votre rentabilité directe.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────── L'ÉCOSYSTÈME DE VENTE DIRECTE ───────── */}
+      <section className={`relative ${SECTION} bg-gradient-to-b from-transparent via-brand-green-pale/30 to-transparent`}>
+        <div className={INNER}>
+          <Reveal>
+            <div className="flex items-center gap-4">
+              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
+              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
+                L'Écosystème de Vente Directe Connecté
+              </h2>
+            </div>
+          </Reveal>
+
+          <Reveal delay={1} className="mt-14 grid gap-6 md:grid-cols-2">
+            {/* Card 1 */}
+            <div className="glass-card rounded-[28px] p-8 ring-1 ring-black/[0.05] shadow-lg hover:-translate-y-1 transition-transform duration-300">
+              <h3 className="text-xl font-bold text-brand-navy mb-4">Interconnexion APIs Performante</h3>
+              <p className="text-brand-navy/75 text-sm leading-relaxed">
+                Nous intégrons vos calendriers de réservation et d'animation directement avec les plus grands moteurs et plateformes de distribution commerciale internationaux.
+              </p>
+              <p className="mt-4 text-brand-navy/75 text-sm leading-relaxed italic">
+                Votre inventaire physique se synchronise automatiquement pour éradiquer l'overbooking en moins de 60 secondes.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="glass-card rounded-[28px] p-8 ring-1 ring-black/[0.05] shadow-lg hover:-translate-y-1 transition-transform duration-300">
+              <h3 className="text-xl font-bold text-brand-navy mb-4">Boutiques &amp; Vitrines Préétablies</h3>
+              <p className="text-brand-navy/75 text-sm leading-relaxed">
+                Nous déployons des vitrines digitales sur-mesure et des boutiques de commerce en ligne pour votre structure.
+              </p>
+              <p className="mt-4 text-brand-navy/75 text-sm leading-relaxed italic">
+                Vendez vos chambres, vos excursions, vos cours de surf ou votre matériel sans intermédiaire et encaissez directement.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
