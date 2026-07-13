@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowDown, ArrowRight, Check } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, Hotel, Waves, Compass } from "lucide-react";
 import { AnimatedBackground } from "./AnimatedBackground";
 import { Reveal, SectionLabel, FeatureCard, SECTION, INNER } from "./Primitives";
 import { PricingSection } from "./PricingSection";
@@ -144,6 +144,154 @@ export const LaMecLanding = () => {
               <p className="mt-4 text-brand-navy/75 text-sm leading-relaxed italic">
                 Vendez vos chambres, vos excursions, vos cours de surf ou votre matériel sans intermédiaire et encaissez directement.
               </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────── PLATEFORMES D'ANIMATION PRÊTES À VENDRE ───────── */}
+      <section className={`relative ${SECTION}`}>
+        <div className={INNER}>
+          <Reveal>
+            <div className="flex items-center gap-4">
+              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
+              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
+                Plateformes d'Animation Prêtes à Vendre
+              </h2>
+            </div>
+          </Reveal>
+
+          <Reveal delay={1} className="mt-14 grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
+            {/* Left Content */}
+            <div>
+              <h3 className="text-[clamp(20px,2.5vw,28px)] font-bold text-brand-navy mb-4">
+                Une Expérience Client sans Friction
+              </h3>
+              <p className="text-brand-navy/80 text-sm sm:text-base leading-relaxed mb-6">
+                Nos solutions unifient l'image et l'acte d'achat d'un prospect voyageur pour transformer l'intérêt en profit instantané :
+              </p>
+              
+              <ul className="space-y-4">
+                {[
+                  {
+                    title: "Showrooms Web Préétablis",
+                    desc: "Des vitrines esthétiques, fluides et optimisées pour le SEO et l'usage mobile."
+                  },
+                  {
+                    title: "E-Boutiques de Loisirs",
+                    desc: "Réservation de créneaux, cours collectifs, excursions ou packages en temps réel."
+                  },
+                  {
+                    title: "Passerelles de Paiement",
+                    desc: "Intégration locale et internationale pour un encaissement direct sur vos comptes."
+                  }
+                ].map((item, i) => (
+                  <li key={item.title} className="flex items-start gap-3">
+                    <span className="text-amber-500 font-bold text-lg leading-none mt-0.5">✦</span>
+                    <p className="text-brand-navy/80 text-sm sm:text-base leading-relaxed">
+                      <strong className="font-semibold text-brand-navy">{item.title} :</strong> {item.desc}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative overflow-hidden rounded-[28px] border border-brand-navy/[0.08] bg-white p-2 shadow-xl">
+              <img
+                src="/team_meeting.png"
+                alt="Une Expérience Client sans Friction"
+                className="w-full h-auto rounded-[24px] object-cover"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────── SOLUTIONS ADAPTÉES À VOTRE SECTEUR ───────── */}
+      <section className={`relative ${SECTION} bg-gradient-to-b from-transparent via-brand-green-pale/20 to-transparent`}>
+        <div className={INNER}>
+          <Reveal>
+            <div className="flex items-center gap-4">
+              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
+              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
+                Solutions Adaptées à Votre Secteur
+              </h2>
+            </div>
+          </Reveal>
+
+          <Reveal delay={1} className="mt-14 grid gap-6 md:grid-cols-3">
+            {/* Card 1 */}
+            <div className="glass-card rounded-[28px] p-7 ring-1 ring-black/[0.05] shadow-lg hover:-translate-y-1 transition-transform duration-300">
+              <div className="h-12 w-12 rounded-2xl bg-amber-100/80 text-amber-800 flex items-center justify-center mb-6">
+                <Hotel className="h-6 w-6" />
+              </div>
+              <h3 className="text-lg font-bold text-brand-navy mb-3">Hébergements &amp; Riads</h3>
+              <p className="text-brand-navy/75 text-sm leading-relaxed">
+                Vitrines de prestige, synchronisation multicanale et assistants conversationnels IA bilingues pour capter la clientèle d'affaires et de loisirs.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="glass-card rounded-[28px] p-7 ring-1 ring-black/[0.05] shadow-lg hover:-translate-y-1 transition-transform duration-300">
+              <div className="h-12 w-12 rounded-2xl bg-amber-100/80 text-amber-800 flex items-center justify-center mb-6">
+                <Waves className="h-6 w-6" />
+              </div>
+              <h3 className="text-lg font-bold text-brand-navy mb-3">Surf Camps &amp; Loisirs</h3>
+              <p className="text-brand-navy/75 text-sm leading-relaxed">
+                Vente de cours en ligne, gestion de stocks d'équipements, réservations de sessions et création de packages hybrides d'hébergement/sport.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="glass-card rounded-[28px] p-7 ring-1 ring-black/[0.05] shadow-lg hover:-translate-y-1 transition-transform duration-300">
+              <div className="h-12 w-12 rounded-2xl bg-amber-100/80 text-amber-800 flex items-center justify-center mb-6">
+                <Compass className="h-6 w-6" />
+              </div>
+              <h3 className="text-lg font-bold text-brand-navy mb-3">Agences &amp; Excursions</h3>
+              <p className="text-brand-navy/75 text-sm leading-relaxed">
+                Catalogues interactifs d'expériences, plannings dynamiques de guides, et devis personnalisés configurés pour un envoi automatique.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────── ATTRACTIVITÉ & AUTORITÉ ───────── */}
+      <section className={`relative ${SECTION}`}>
+        <div className={INNER}>
+          <Reveal className="flex flex-col gap-4">
+            <span className="inline-block bg-amber-100/80 text-amber-800 border border-amber-200/50 rounded-lg px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider w-fit">
+              Attractivité &amp; Autorité
+            </span>
+            <h2 className="text-[clamp(28px,4.5vw,52px)] font-bold leading-[1.1] text-brand-navy">
+              L'ALLURE D'UNE ENSEIGNE D'EXCEPTION
+            </h2>
+          </Reveal>
+
+          <Reveal delay={1} className="mt-14 grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
+            {/* Left Content */}
+            <div>
+              <h3 className="text-[clamp(20px,2.5vw,28px)] font-bold text-brand-navy mb-4">
+                Sublimez Votre Spot Touristique
+              </h3>
+              <p className="text-brand-navy/80 text-sm sm:text-base leading-relaxed mb-6">
+                Le coup de cœur d'un voyageur s'établit sur la preuve visuelle. Nous mettons en œuvre nos compétences de captation artistique de calibre international.
+              </p>
+              <div className="rounded-2xl bg-brand-green-pale/40 border border-brand-green/10 p-5">
+                <p className="text-brand-navy/85 text-sm sm:text-base leading-relaxed">
+                  <strong className="font-semibold text-brand-navy">Contenu RAW &amp; Drone 4K :</strong> Shootings aériens professionnels, angles intérieurs de caractère et clips montés spécifiquement pour déclencher l'acte d'achat sur vos réseaux.
+                </p>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative overflow-hidden rounded-[28px] border border-brand-navy/[0.08] bg-white p-2 shadow-xl">
+              <img
+                src="/drone_aerial_resort.png"
+                alt="L'ALLURE D'UNE ENSEIGNE D'EXCEPTION"
+                className="w-full h-auto rounded-[24px] object-cover"
+              />
             </div>
           </Reveal>
         </div>
