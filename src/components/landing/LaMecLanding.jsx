@@ -34,8 +34,8 @@ export const LaMecLanding = () => {
             />
             <span className="h-10 w-px bg-black/15" />
             <div className="font-display font-semibold leading-tight">
-              <div className="text-xs tracking-[0.22em] text-brand-navy">LA MAISON DE</div>
-              <div className="text-xs tracking-[0.22em] text-brand-green-deep">L'EXPERTISE COMPTABLE</div>
+              <div className="text-xs tracking-[0.22em] text-brand-navy font-bold">LA MEC CONSEILS</div>
+              <div className="text-xs tracking-[0.22em] text-amber-500 font-bold">L'EXPERTISE COMPTABLE</div>
             </div>
           </Reveal>
 
@@ -43,7 +43,7 @@ export const LaMecLanding = () => {
 
           <Reveal delay={3} className="mt-12 max-w-[850px]">
             <h1 className="font-display text-[clamp(36px,5.5vw,70px)] font-bold leading-[1.1] text-brand-navy">
-              Le Nouveau Moteur de <span className="brand-gradient-text">Croissance</span>
+              Le Nouveau Moteur de <span className="text-amber-500">Croissance</span>
               <br />
               de Votre Activité Touristique
             </h1>
@@ -64,39 +64,46 @@ export const LaMecLanding = () => {
       </section>
 
       {/* ───────── LE COÛT DE L'INACTION ───────── */}
-      <section className={`relative ${SECTION}`}>
+      <section className={`relative ${SECTION} py-10 sm:py-14`}>
         <div className={INNER}>
           <Reveal>
-            <div className="flex items-center gap-4">
-              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
-              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
-                Le Coût de l'Inaction Commerciale
-              </h2>
-            </div>
-          </Reveal>
+            <div className="rounded-2xl bg-white ring-1 ring-black/[0.06] shadow-lg overflow-hidden">
+              <div className="grid md:grid-cols-[1fr_auto_1fr] items-stretch">
+                {/* Left — stat */}
+                <div className="p-6 sm:p-8 lg:p-10">
+                  <h2 className="text-sm sm:text-base font-bold uppercase tracking-wider text-brand-navy">
+                    Le Coût de l'Inaction Commerciale
+                  </h2>
+                  <div className="mt-4 text-[clamp(72px,14vw,110px)] font-black leading-none text-amber-500 tracking-tight">
+                    85%
+                  </div>
+                  <p className="mt-2 text-base font-semibold text-brand-navy">
+                    des demandes sans réponse sont perdues
+                  </p>
+                </div>
 
-          <Reveal delay={1} className="mt-16 grid gap-12 md:grid-cols-2 items-center">
-            {/* Big stat left */}
-            <div className="text-center md:text-left">
-              <div className="text-[clamp(100px,18vw,160px)] font-black leading-none text-amber-500 tracking-tight">
-                85%
+                {/* Vertical divider */}
+                <div className="hidden md:flex items-center px-0">
+                  <div className="w-px h-[70%] bg-brand-green/40" />
+                </div>
+                {/* Horizontal divider on mobile */}
+                <div className="md:hidden mx-8">
+                  <div className="h-px w-full bg-brand-green/30" />
+                </div>
+
+                {/* Right — explanation */}
+                <div className="p-6 sm:p-8 lg:p-10">
+                  <h3 className="text-lg sm:text-xl font-bold text-brand-navy mb-4">
+                    L'Exigence Absolue d'Immédiateté
+                  </h3>
+                  <p className="text-brand-navy/75 leading-relaxed text-sm">
+                    En 2025, <strong>85% des voyageurs</strong> se tournent instantanément vers le concurrent direct si leur premier contact (WhatsApp, téléphone, email) ne reçoit pas de réponse qualifiée en moins de 30 secondes.
+                  </p>
+                  <p className="mt-4 text-brand-navy/75 leading-relaxed text-sm">
+                    De plus, la commission des agences en ligne internationales (OTA) dépasse en moyenne <strong>15% à 25%</strong> de votre chiffre d'affaires, rognant votre rentabilité directe.
+                  </p>
+                </div>
               </div>
-              <p className="mt-4 text-xl font-semibold text-brand-navy">
-                des demandes sans réponse sont perdues
-              </p>
-            </div>
-
-            {/* Right content */}
-            <div>
-              <h3 className="text-[clamp(20px,2.5vw,26px)] font-bold text-brand-navy mb-4">
-                L'Exigence Absolue d'Immédiateté
-              </h3>
-              <p className="text-brand-navy/80 leading-relaxed text-sm sm:text-base">
-                En 2026, <strong>85% des voyageurs et sportifs</strong> abandonnent leur processus d'achat si leur premier contact (WhatsApp, Instagram, Web) ne reçoit pas de réponse qualifiée en moins de 30 secondes.
-              </p>
-              <p className="mt-4 text-brand-navy/80 leading-relaxed text-sm sm:text-base">
-                De plus, les commissions des agences en ligne internationales (OTAs) s'accaparent entre <strong>15% et 25%</strong> de votre chiffre d'affaires, rognant votre rentabilité directe.
-              </p>
             </div>
           </Reveal>
         </div>
