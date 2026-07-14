@@ -68,6 +68,32 @@ const RadioOption = ({ label, checked, onChange, name }) => (
   </label>
 );
 
+const FileInput = ({ label, onChange, file }) => (
+  <div className="flex flex-col gap-1.5">
+    <label className="text-sm font-medium text-brand-navy/80 block text-left">{label}</label>
+    <div className="relative flex items-center">
+      <input
+        type="file"
+        onChange={onChange}
+        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+      />
+      <div className={`w-full rounded-xl border px-4 py-2.5 text-sm transition-all flex items-center justify-between ${file ? 'bg-amber-500/10 border-amber-500/30' : 'bg-brand-bg border-brand-navy/[0.1] hover:bg-white'}`}>
+        <span className={file ? 'text-brand-navy font-medium truncate max-w-[85%]' : 'text-brand-navy/40'}>
+          {file ? file.name : "Sélectionner un fichier (Optionnel)"}
+        </span>
+        <svg className={`w-4 h-4 shrink-0 ${file ? 'text-amber-600' : 'text-brand-navy/30'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          {file ? (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          ) : (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          )}
+        </svg>
+      </div>
+    </div>
+  </div>
+);
+
 export const DiagnosticSection = () => {
   const [raisonSociale, setRaisonSociale] = useState("");
   const [ice, setIce] = useState("");
@@ -79,9 +105,16 @@ export const DiagnosticSection = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [hasWebsite, setHasWebsite] = useState("");
+  const [platforms, setPlatforms] = useState("");
 
-  const toggleActivity = (act) => {
+  const [fileStatuts, setFileStatuts] = useState(null);
+  const [fileRC, setFileRC] = useState(null);
+  const [fileFiscale, setFileFiscale] = useState(null);
+  const [fileCNSS, setFileCNSS] = useState(null);
+  const [fileBilan, setFileBilan] = useState(null);  const toggleActivity = (act) => {
     setSelectedActivities(prev =>
       prev.includes(act) ? prev.filter(a => a !== act) : [...prev, act]
     );
@@ -93,34 +126,55 @@ export const DiagnosticSection = () => {
     );
   };
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     
-    // Show success instantly — don't make user wait for FormSubmit server
-    setSent(true);
+    setIsSubmitting(true);
 
-    // Fire-and-forget: send in background via Web3Forms
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        access_key: "43f33592-ad19-442f-a18e-208a779f9a51",
-        subject: "📋 Formulaire d'Éligibilité — La MEC Conseils",
-        from_name: "La MEC Conseils Website",
-        "Raison Sociale": raisonSociale,
-        "ICE (Identifiant Fiscal)": ice,
-        "N° CNSS & Effectif": cnssEffectif,
-        "Tranche CA Annuel": caAnnuel,
-        "Typologie de l'activité": selectedActivities.join(", ") || "Aucune",
-        "Besoins immédiats & prioritaires": selectedNeeds.join(", ") || "Aucun",
-        "Pack Sélectionné": selectedPack || "Aucun",
-        email: email,
-        "Téléphone": phone,
-      }),
-    })
-    .then(r => r.json())
-    .then(d => console.log("✅ Web3Forms:", d))
-    .catch(e => console.error("❌ Web3Forms:", e));
+    const formData = new FormData();
+    formData.append("access_key", "43f33592-ad19-442f-a18e-208a779f9a51");
+    formData.append("subject", "📋 Formulaire d'Éligibilité — La MEC Conseils");
+    formData.append("from_name", "La MEC Conseils Website");
+    formData.append("Raison Sociale", raisonSociale);
+    formData.append("ICE (Identifiant Fiscal)", ice);
+    formData.append("N° CNSS & Effectif", cnssEffectif);
+    formData.append("Tranche CA Annuel", caAnnuel);
+    formData.append("Email", email);
+    formData.append("Téléphone", phone);
+    formData.append("Typologie de l'activité", selectedActivities.join(", ") || "Aucune");
+    formData.append("Besoins immédiats & prioritaires", selectedNeeds.join(", ") || "Aucun");
+    formData.append("Pack Sélectionné", selectedPack || "Aucun");
+    formData.append("A un site web ?", hasWebsite || "Non précisé");
+    formData.append("Plateformes de vente", platforms || "Aucune");
+
+    // Append files if they exist
+    if (fileStatuts) formData.append("Statuts", fileStatuts);
+    if (fileRC) formData.append("Registre de Commerce", fileRC);
+    if (fileFiscale) formData.append("Régularité Fiscale", fileFiscale);
+    if (fileCNSS) formData.append("Régularité CNSS", fileCNSS);
+    if (fileBilan) formData.append("Bilan (2 années passées)", fileBilan);
+
+    try {
+      // Send via Web3Forms with FormData for file support
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      console.log("✅ Web3Forms response:", data);
+      
+      if (data.success) {
+        setSent(true);
+      } else {
+        alert("Erreur: " + (data.message || "Veuillez réessayer."));
+      }
+    } catch (err) {
+      console.error("❌ Submission failed:", err);
+      alert("Une erreur s'est produite. Veuillez réessayer.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -258,16 +312,54 @@ export const DiagnosticSection = () => {
                   </div>
                 </div>
 
+                {/* 3. Présence Digitale */}
+                <div className="pt-4">
+                  <h3 className="text-base font-bold uppercase tracking-wider text-brand-navy mb-4 flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-brand-navy" />
+                    3. Présence Digitale
+                  </h3>
+                  
+                  <div className="space-y-5">
+                    <div>
+                      <label className="text-sm font-semibold text-brand-navy/85 block mb-3 text-left">Avez-vous un site web ?</label>
+                      <div className="flex gap-6">
+                        <RadioOption 
+                          label="Oui" 
+                          checked={hasWebsite === "Oui"} 
+                          onChange={() => setHasWebsite("Oui")} 
+                          name="hasWebsite"
+                        />
+                        <RadioOption 
+                          label="Non" 
+                          checked={hasWebsite === "Non"} 
+                          onChange={() => setHasWebsite("Non")} 
+                          name="hasWebsite"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-sm font-semibold text-brand-navy/85 block mb-2 text-left">Plateformes de vente (Booking, Airbnb, etc.) :</label>
+                      <input 
+                        type="text" 
+                        value={platforms} 
+                        onChange={(e) => setPlatforms(e.target.value)} 
+                        placeholder="Ex: Booking, Airbnb, Agence..."
+                        className="w-full rounded-xl border border-brand-navy/[0.1] bg-brand-bg px-4 py-2.5 text-sm text-brand-navy placeholder:text-brand-navy/30 focus:bg-white focus:border-brand-navy focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                </div>
+
               </div>
 
               {/* Right Column */}
               <div className="space-y-8 flex flex-col justify-between">
                 
-                {/* 3. Vos Besoins */}
+                {/* 4. Vos Besoins */}
                 <div>
                   <h3 className="text-base font-bold uppercase tracking-wider text-amber-500 mb-4 flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-amber-500" />
-                    3. Vos besoins immédiats & prioritaires
+                    4. Vos besoins immédiats & prioritaires
                   </h3>
                   
                   <div className="space-y-3">
@@ -282,11 +374,11 @@ export const DiagnosticSection = () => {
                   </div>
                 </div>
 
-                {/* 4. Sélection du Pack */}
+                {/* 5. Sélection du Pack */}
                 <div>
                   <h3 className="text-base font-bold uppercase tracking-wider text-amber-500 mb-4 flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-amber-500" />
-                    4. Sélection du pack d'accompagnement
+                    5. Sélection du pack d'accompagnement
                   </h3>
                   
                   <div className="space-y-3">
@@ -299,6 +391,22 @@ export const DiagnosticSection = () => {
                         name="packSelection"
                       />
                     ))}
+                  </div>
+                </div>
+
+                {/* 6. Pièces Jointes */}
+                <div className="pt-2">
+                  <h3 className="text-base font-bold uppercase tracking-wider text-amber-500 mb-4 flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-amber-500" />
+                    6. Pièces jointes (Facultatif)
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    <FileInput label="Statuts de l'entreprise" file={fileStatuts} onChange={(e) => setFileStatuts(e.target.files[0])} />
+                    <FileInput label="Registre de commerce" file={fileRC} onChange={(e) => setFileRC(e.target.files[0])} />
+                    <FileInput label="Régularité fiscale" file={fileFiscale} onChange={(e) => setFileFiscale(e.target.files[0])} />
+                    <FileInput label="Régularité de soumission CNSS" file={fileCNSS} onChange={(e) => setFileCNSS(e.target.files[0])} />
+                    <FileInput label="Bilan des 2 années passées" file={fileBilan} onChange={(e) => setFileBilan(e.target.files[0])} />
                   </div>
                 </div>
 
@@ -319,14 +427,18 @@ export const DiagnosticSection = () => {
                   <div className="flex flex-col items-stretch sm:items-start gap-3">
                     <button
                       type="submit"
-                      disabled={sent}
+                      disabled={isSubmitting || sent}
                       className="group inline-flex items-center justify-center gap-4 rounded-full bg-brand-navy pl-8 pr-2 py-2 text-base font-semibold text-white shadow-[0_20px_50px_-15px_oklch(0.2_0.06_250/0.5)] transition-all hover:bg-amber-500 hover:text-white cursor-pointer w-full sm:w-auto disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                       <span className="py-2">
-                        {sent ? "✓ Envoyé !" : "Valider mon dossier d'éligibilité"}
+                        {isSubmitting ? "Envoi en cours..." : sent ? "✓ Envoyé !" : "Valider mon dossier d'éligibilité"}
                       </span>
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full ring-1 ring-white/30 transition-transform group-hover:translate-x-0.5 group-hover:ring-white/50">
-                        <ArrowRight className="h-5 w-5" />
+                        {isSubmitting ? (
+                          <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        ) : (
+                          <ArrowRight className="h-5 w-5" />
+                        )}
                       </span>
                     </button>
                     {sent && <div className="text-sm font-semibold text-amber-500 mt-2">✓ Merci ! Votre formulaire d'éligibilité a été envoyé. Notre expert vous contactera sous 48h.</div>}
