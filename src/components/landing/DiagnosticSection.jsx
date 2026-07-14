@@ -92,8 +92,13 @@ export const DiagnosticSection = () => {
     );
   };
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
+
+    const BREVO_API_KEY = import.meta.env.VITE_BREVO_API_KEY;
+    const BREVO_LIST_ID = 4;
+
+    // 1. Notification par email via FormSubmit
     fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -110,6 +115,32 @@ export const DiagnosticSection = () => {
         "Téléphone": phone,
       }),
     }).catch(() => {});
+
+    // 2. Ajout du contact dans Brevo
+    try {
+      await fetch("https://api.brevo.com/v3/contacts", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "api-key": BREVO_API_KEY
+        },
+        body: JSON.stringify({
+          email: email,
+          listIds: [BREVO_LIST_ID],
+          updateEnabled: true,
+          attributes: {
+            RAISON_SOCIALE: raisonSociale,
+            ICE: ice,
+            PHONE: phone,
+            CA_ANNUEL: caAnnuel
+          }
+        })
+      });
+    } catch (err) {
+      console.error("Erreur Brevo:", err);
+    }
+
     setSent(true);
   };
 
