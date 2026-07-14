@@ -64,8 +64,8 @@ export const LaMecLanding = () => {
                 Manager
               </span>
               <span className="w-px h-4 bg-brand-navy/20" />
-              <a href="mailto:Manger@lamec.ma" className="font-semibold tracking-wide text-brand-navy/80 text-xs sm:text-sm hover:text-amber-500 transition-colors">
-                Manger@lamec.ma
+              <a href="mailto:Manager@lameconseils.ma" className="font-semibold tracking-wide text-brand-navy/80 text-xs sm:text-sm hover:text-amber-500 transition-colors">
+                Manager@lameconseils.ma
               </a>
             </div>
           </Reveal>
