@@ -297,6 +297,182 @@ export const LaMecLanding = () => {
         </div>
       </section>
 
+      {/* ───────── PLAN DE DÉPLOIEMENT STRATÉGIQUE ───────── */}
+      <section className={`relative ${SECTION} bg-gradient-to-b from-transparent via-brand-green-pale/10 to-transparent`}>
+        <div className={INNER}>
+          <Reveal>
+            <div className="flex items-center gap-4">
+              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
+              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
+                Plan de Déploiement Stratégique
+              </h2>
+            </div>
+          </Reveal>
+
+          {/* Desktop Timeline */}
+          <div className="hidden md:block relative mt-24 pb-20">
+            {/* Horizontal Line */}
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 border-t-2 border-dashed border-amber-400/80 -translate-y-1/2 z-0" />
+
+            <div className="grid grid-cols-4 gap-6 relative z-10">
+              
+              {/* S1 - S2 (Below Line) */}
+              <div className="flex flex-col items-center">
+                <div className="h-32" /> {/* empty space above the line */}
+                {/* Circle marker */}
+                <div className="w-6 h-6 rounded-full border-4 border-amber-400 bg-white shadow-md flex items-center justify-center my-4 animate-pulse" />
+                {/* Card */}
+                <Reveal delay={0} className="w-full">
+                  <div className="glass-card rounded-2xl p-5 ring-1 ring-black/5 shadow-lg text-center min-h-[140px] hover:scale-[1.02] transition-transform">
+                    <div className="text-amber-500 font-bold text-sm mb-2">S1 – S2</div>
+                    <p className="text-brand-navy/80 text-xs sm:text-sm leading-relaxed">
+                      Audit UX, audit sémantique de l'audience et lancement de l'étude d'éligibilité.
+                    </p>
+                  </div>
+                </Reveal>
+              </div>
+
+              {/* S3 - S5 (Above Line) */}
+              <div className="flex flex-col items-center">
+                {/* Card */}
+                <Reveal delay={1} className="w-full">
+                  <div className="glass-card rounded-2xl p-5 ring-1 ring-black/5 shadow-lg text-center min-h-[140px] hover:scale-[1.02] transition-transform">
+                    <div className="text-amber-500 font-bold text-sm mb-2">S3 – S5</div>
+                    <p className="text-brand-navy/80 text-xs sm:text-sm leading-relaxed">
+                      Shootings drone &amp; sol, développement de l'agent IA, intégration et maquettage vitrines.
+                    </p>
+                  </div>
+                </Reveal>
+                {/* Circle marker */}
+                <div className="w-6 h-6 rounded-full border-4 border-amber-400 bg-white shadow-md flex items-center justify-center my-4 animate-pulse" />
+                <div className="h-32" /> {/* empty space below the line */}
+              </div>
+
+              {/* S6 - S7 (Below Line) */}
+              <div className="flex flex-col items-center">
+                <div className="h-32" />
+                {/* Circle marker */}
+                <div className="w-6 h-6 rounded-full border-4 border-amber-400 bg-white shadow-md flex items-center justify-center my-4 animate-pulse" />
+                {/* Card */}
+                <Reveal delay={2} className="w-full">
+                  <div className="glass-card rounded-2xl p-5 ring-1 ring-black/5 shadow-lg text-center min-h-[140px] hover:scale-[1.02] transition-transform">
+                    <div className="text-amber-500 font-bold text-sm mb-2">S6 – S7</div>
+                    <p className="text-brand-navy/80 text-xs sm:text-sm leading-relaxed">
+                      Déploiement des VPN d'équipe, chiffrement, synchronisation et raccordement des APIs.
+                    </p>
+                  </div>
+                </Reveal>
+              </div>
+
+              {/* S8 (Above Line) */}
+              <div className="flex flex-col items-center">
+                {/* Card */}
+                <Reveal delay={3} className="w-full">
+                  <div className="glass-card rounded-2xl p-5 ring-1 ring-black/5 shadow-lg text-center min-h-[140px] hover:scale-[1.02] transition-transform">
+                    <div className="text-amber-500 font-bold text-sm mb-2">S8</div>
+                    <p className="text-brand-navy/80 text-xs sm:text-sm leading-relaxed">
+                      Go-Live global, formation des équipes locales et livraison finale des actifs.
+                    </p>
+                  </div>
+                </Reveal>
+                {/* Circle marker */}
+                <div className="w-6 h-6 rounded-full border-4 border-amber-400 bg-white shadow-md flex items-center justify-center my-4 animate-pulse" />
+                <div className="h-32" />
+              </div>
+
+            </div>
+          </div>
+
+          {/* Mobile Vertical Timeline */}
+          <div className="block md:hidden relative mt-12 pl-8 border-l-2 border-dashed border-amber-400/80 space-y-8">
+            {[
+              { w: "S1 – S2", desc: "Audit UX, audit sémantique de l'audience et lancement de l'étude d'éligibilité." },
+              { w: "S3 – S5", desc: "Shootings drone & sol, développement de l'agent IA, intégration et maquettage vitrines." },
+              { w: "S6 – S7", desc: "Déploiement des VPN d'équipe, chiffrement, synchronisation et raccordement des APIs." },
+              { w: "S8", desc: "Go-Live global, formation des équipes locales et livraison finale des actifs." }
+            ].map((step, idx) => (
+              <Reveal key={step.w} delay={idx} className="relative">
+                {/* Bullet */}
+                <div className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full border-4 border-amber-400 bg-white shadow-sm flex items-center justify-center" />
+                {/* Card */}
+                <div className="glass-card rounded-2xl p-5 ring-1 ring-black/5 shadow-lg">
+                  <div className="text-amber-500 font-bold text-sm mb-1">{step.w}</div>
+                  <p className="text-brand-navy/80 text-sm leading-relaxed">{step.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── MAXIMISEZ VOS MARGES ───────── */}
+      <section className={`relative ${SECTION}`}>
+        <div className={INNER}>
+          <Reveal>
+            <div className="flex items-center gap-4">
+              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
+              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
+                Maximisez Vos Marges : Le Match des Canaux
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="mt-14 max-w-4xl mx-auto space-y-6">
+            {/* Bar 1 */}
+            <Reveal delay={0} className="space-y-2">
+              <div className="flex justify-between items-center text-sm font-semibold text-brand-navy">
+                <span>Canal Connecté Direct (Notre Solution)</span>
+              </div>
+              <div className="w-full bg-brand-navy/[0.06] rounded-full h-10 overflow-hidden ring-1 ring-black/5 relative">
+                <div 
+                  className="bg-gradient-to-r from-brand-navy via-brand-green-deep to-brand-green h-full rounded-full flex items-center px-4 transition-all duration-1000 shadow-inner" 
+                  style={{ width: "97%" }}
+                >
+                  <span className="text-white text-xs sm:text-sm font-bold">97% Marge Conservée</span>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Bar 2 */}
+            <Reveal delay={1} className="space-y-2">
+              <div className="flex justify-between items-center text-sm font-semibold text-brand-navy">
+                <span>Canal Hybride (Acquisition Publique)</span>
+              </div>
+              <div className="w-full bg-brand-navy/[0.06] rounded-full h-10 overflow-hidden ring-1 ring-black/5 relative">
+                <div 
+                  className="bg-gradient-to-r from-[#1b2a4a] to-[#c29c66] h-full rounded-full flex items-center px-4 transition-all duration-1000" 
+                  style={{ width: "95%" }}
+                >
+                  <span className="text-white text-xs sm:text-sm font-bold">95% Marge Conservée</span>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Bar 3 */}
+            <Reveal delay={2} className="space-y-2">
+              <div className="flex justify-between items-center text-sm font-semibold text-brand-navy">
+                <span>Canal OTA Classique (Booking, Expedia, Airbnb)</span>
+              </div>
+              <div className="w-full bg-brand-navy/[0.06] rounded-full h-10 overflow-hidden ring-1 ring-black/5 relative">
+                <div 
+                  className="bg-gradient-to-r from-rose-500 to-red-600 h-full rounded-full flex items-center px-4 transition-all duration-1000" 
+                  style={{ width: "75%" }}
+                >
+                  <span className="text-white text-xs sm:text-sm font-bold">75% Marge Conservée (15-25% de frais)</span>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Bottom italic quote */}
+            <Reveal delay={3} className="pt-6 text-center">
+              <p className="text-sm italic text-brand-navy/60 leading-relaxed max-w-2xl mx-auto">
+                En redirigeant seulement 40% de vos réservations vers vos vitrines propriétaires d'acquisition, vous augmentez votre rentabilité nette de 12% dès la première saison.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ───────── INFRASTRUCTURE ───────── */}
       <section className={`relative ${SECTION} bg-gradient-to-b from-transparent via-brand-green-pale/40 to-transparent`}>
         <div className={INNER}>
