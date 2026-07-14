@@ -138,7 +138,6 @@ export const DiagnosticSection = () => {
     const response = await fetch(uploadUrl, {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${SUPABASE_KEY}`,
         "apikey": SUPABASE_KEY,
         "Content-Type": file.type
       },
