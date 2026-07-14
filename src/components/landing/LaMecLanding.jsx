@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowDown, ArrowRight, Check, Hotel, Waves, Compass } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, Hotel, Waves, Compass, Cloud, Store } from "lucide-react";
 import { AnimatedBackground } from "./AnimatedBackground";
 import { Reveal, SectionLabel, FeatureCard, SECTION, INNER } from "./Primitives";
 import { PricingSection } from "./PricingSection";
@@ -121,8 +121,10 @@ export const LaMecLanding = () => {
           <Reveal delay={1} className="mt-10 grid gap-6 md:grid-cols-2">
             {/* Card 1 — APIs */}
             <div className="flex gap-5 rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-black/[0.06] shadow-md">
-              <div className="shrink-0 mt-1">
-                <img src="/SNYC IC.svg" alt="" className="h-12 w-12 object-contain" />
+              <div className="shrink-0">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-green-pale/80 text-brand-green-deep ring-1 ring-brand-green/10">
+                  <Cloud className="h-7 w-7 stroke-[1.5]" />
+                </div>
               </div>
               <div>
                 <h3 className="text-base sm:text-lg font-bold text-brand-navy mb-3">Interconnexion APIs Performante</h3>
@@ -137,8 +139,10 @@ export const LaMecLanding = () => {
 
             {/* Card 2 — Boutiques */}
             <div className="flex gap-5 rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-black/[0.06] shadow-md">
-              <div className="shrink-0 mt-1">
-                <img src="/SOLUTION ODOO IC.svg" alt="" className="h-12 w-12 object-contain" />
+              <div className="shrink-0">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-green-pale/80 text-brand-green-deep ring-1 ring-brand-green/10">
+                  <Store className="h-7 w-7 stroke-[1.5]" />
+                </div>
               </div>
               <div>
                 <h3 className="text-base sm:text-lg font-bold text-brand-navy mb-3">Boutiques &amp; Vitrines Préétablies</h3>
