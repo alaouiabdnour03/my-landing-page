@@ -100,7 +100,7 @@ export const DiagnosticSection = () => {
     setSent(true);
 
     // Fire-and-forget: send in background
-    fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
+    fetch("https://formsubmit.co/ajax/alaoui7812@gmail.com", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
