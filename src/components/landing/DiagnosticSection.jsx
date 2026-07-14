@@ -99,15 +99,14 @@ export const DiagnosticSection = () => {
     // Show success instantly — don't make user wait for FormSubmit server
     setSent(true);
 
-    // Fire-and-forget: send in background
-    fetch("https://formsubmit.co/ajax/alaoui7812@gmail.com", {
+    // Fire-and-forget: send in background via Web3Forms
+    fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
-        _subject: "📋 Formulaire d'Éligibilité — La MEC Conseils",
-        _captcha: "false",
-        _template: "table",
-        _replyto: email,
+        access_key: "43f33592-ad19-442f-a18e-208a779f9a51",
+        subject: "📋 Formulaire d'Éligibilité — La MEC Conseils",
+        from_name: "La MEC Conseils Website",
         "Raison Sociale": raisonSociale,
         "ICE (Identifiant Fiscal)": ice,
         "N° CNSS & Effectif": cnssEffectif,
@@ -115,13 +114,13 @@ export const DiagnosticSection = () => {
         "Typologie de l'activité": selectedActivities.join(", ") || "Aucune",
         "Besoins immédiats & prioritaires": selectedNeeds.join(", ") || "Aucun",
         "Pack Sélectionné": selectedPack || "Aucun",
-        "Email": email,
+        email: email,
         "Téléphone": phone,
       }),
     })
     .then(r => r.json())
-    .then(d => console.log("✅ FormSubmit:", d))
-    .catch(e => console.error("❌ FormSubmit:", e));
+    .then(d => console.log("✅ Web3Forms:", d))
+    .catch(e => console.error("❌ Web3Forms:", e));
   };
 
   return (
