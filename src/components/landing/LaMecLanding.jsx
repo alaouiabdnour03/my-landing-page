@@ -57,8 +57,16 @@ export const LaMecLanding = () => {
             <div className="w-16 h-1 bg-amber-500 rounded-full" />
           </Reveal>
 
-
-
+          {/* Contact Bar */}
+          <Reveal delay={6} className="mt-10">
+            <div className="inline-flex items-center gap-3 sm:gap-5 rounded-xl bg-brand-navy/[0.07] backdrop-blur-sm px-5 py-3 text-sm">
+              <span className="font-bold text-brand-navy tracking-wide uppercase text-xs sm:text-sm">HAKIMI IBRAHIMI</span>
+              <span className="h-4 w-px bg-brand-navy/20" />
+              <span className="text-brand-navy/60 text-xs sm:text-sm">Manager - Associé</span>
+              <span className="h-4 w-px bg-brand-navy/20 hidden sm:block" />
+              <a href="mailto:contact@lamecconseil.com" className="text-brand-navy/60 text-xs sm:text-sm hover:text-amber-500 transition-colors">contact@lamecconseil.com</a>
+            </div>
+          </Reveal>
 
         </motion.div>
       </section>
