@@ -95,9 +95,8 @@ export const DiagnosticSection = () => {
   const submit = async (e) => {
     e.preventDefault();
 
-    // Vercel serverless backend URL for Brevo
-    // Replace this with your actual Vercel deployment URL once deployed
-    const BREVO_PROXY_URL = "https://lamec-api.vercel.app/api/submit";
+    // Vercel serverless backend URL for Brevo (same domain)
+    const BREVO_PROXY_URL = "/api/submit";
 
     const formData = {
       raisonSociale,
