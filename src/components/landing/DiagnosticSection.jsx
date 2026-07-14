@@ -132,8 +132,8 @@ export const DiagnosticSection = () => {
           <form onSubmit={submit} className="relative mx-auto max-w-[1000px] rounded-[32px] bg-white p-6 sm:p-10 ring-1 ring-brand-navy/[0.06] shadow-[0_2px_8px_-2px_oklch(0.2_0.06_250/0.08),0_24px_60px_-24px_oklch(0.2_0.06_250/0.15)]">
             {/* Mesh highlights inside form background */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[32px]">
-              <div className="absolute -left-20 -top-20 h-[280px] w-[280px] rounded-full bg-brand-green/10 blur-[90px]" />
-              <div className="absolute -right-20 -bottom-20 h-[280px] w-[280px] rounded-full bg-violet-300/10 blur-[90px]" />
+              <div className="absolute -left-20 -top-20 h-[280px] w-[280px] rounded-full bg-amber-500/10 blur-[90px]" />
+              <div className="absolute -right-20 -bottom-20 h-[280px] w-[280px] rounded-full bg-orange-300/10 blur-[90px]" />
             </div>
 
             <div className="grid gap-10 md:grid-cols-2">
@@ -255,8 +255,8 @@ export const DiagnosticSection = () => {
                 
                 {/* 3. Vos Besoins */}
                 <div>
-                  <h3 className="text-base font-bold uppercase tracking-wider text-brand-green-deep mb-4 flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-brand-green-deep" />
+                  <h3 className="text-base font-bold uppercase tracking-wider text-amber-500 mb-4 flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-amber-500" />
                     3. Vos besoins immédiats & prioritaires
                   </h3>
                   
@@ -274,8 +274,8 @@ export const DiagnosticSection = () => {
 
                 {/* 4. Sélection du Pack */}
                 <div>
-                  <h3 className="text-base font-bold uppercase tracking-wider text-brand-green-deep mb-4 flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-brand-green-deep" />
+                  <h3 className="text-base font-bold uppercase tracking-wider text-amber-500 mb-4 flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-amber-500" />
                     4. Sélection du pack d'accompagnement
                   </h3>
                   
@@ -293,22 +293,30 @@ export const DiagnosticSection = () => {
                 </div>
 
                 {/* Bottom Disclaimer & Submit */}
-                <div className="pt-4 border-t border-brand-navy/[0.06] space-y-5">
-                  <p className="text-xs italic leading-relaxed text-brand-navy/60">
-                    En soumettant ce formulaire, vous mandatez LA MEC CONSEILS pour instruire gratuitement votre dossier d'éligibilité au financement de 90%.
-                  </p>
+                <div className="pt-4 border-t border-brand-navy/[0.06] space-y-6">
+                  
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full border border-amber-500 text-amber-500 mt-0.5">
+                      <span className="text-xs sm:text-sm font-serif italic font-bold">i</span>
+                    </div>
+                    <p className="text-sm leading-relaxed text-brand-navy/70">
+                      En soumettant ce formulaire, vous mandatez <br className="hidden lg:block" />
+                      LA MEC CONSEILS pour instruire gratuitement votre <br className="hidden lg:block" />
+                      dossier d'éligibilité au <strong className="text-amber-500 font-bold">financement de 90%</strong>.
+                    </p>
+                  </div>
                   
                   <div className="flex flex-col items-stretch sm:items-start gap-3">
                     <button
                       type="submit"
-                      className="group inline-flex items-center justify-center gap-4 rounded-full bg-brand-navy pl-8 pr-2 py-2 text-base font-semibold text-white shadow-[0_20px_50px_-15px_oklch(0.2_0.06_250/0.5)] transition-all hover:bg-brand-green hover:text-brand-navy cursor-pointer w-full sm:w-auto"
+                      className="group inline-flex items-center justify-center gap-4 rounded-full bg-brand-navy pl-8 pr-2 py-2 text-base font-semibold text-white shadow-[0_20px_50px_-15px_oklch(0.2_0.06_250/0.5)] transition-all hover:bg-amber-500 hover:text-white cursor-pointer w-full sm:w-auto"
                     >
                       <span className="py-2">Valider mon dossier d'éligibilité</span>
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full ring-1 ring-white/30 transition-transform group-hover:translate-x-0.5 group-hover:ring-brand-navy/30">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full ring-1 ring-white/30 transition-transform group-hover:translate-x-0.5 group-hover:ring-white/50">
                         <ArrowRight className="h-5 w-5" />
                       </span>
                     </button>
-                    {sent && <div className="text-sm font-semibold text-brand-green-deep mt-2">✓ Merci ! Votre formulaire d'éligibilité a été envoyé. Notre expert vous contactera sous 48h.</div>}
+                    {sent && <div className="text-sm font-semibold text-amber-500 mt-2">✓ Merci ! Votre formulaire d'éligibilité a été envoyé. Notre expert vous contactera sous 48h.</div>}
                   </div>
                 </div>
 

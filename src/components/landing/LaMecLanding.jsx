@@ -326,7 +326,7 @@ export const LaMecLanding = () => {
               
               <div className="relative overflow-hidden rounded-3xl bg-white shadow-xl">
                 <img
-                  src="/drone_aerial_resort.png"
+                  src="https://discerning.wp-cdn.site/wp-content/uploads/2025/06/03110031/Boutique-Hotel-Alhambra-aerial-footage-of-the-crystal-clear-sea-Losinj-Croatia-1-1920x1080.jpg"
                   alt="L'ALLURE D'UNE ENSEIGNE D'EXCEPTION"
                   className="w-full h-auto rounded-3xl object-cover"
                 />
