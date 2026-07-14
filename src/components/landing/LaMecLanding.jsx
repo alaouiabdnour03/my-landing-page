@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowDown, ArrowRight, Check, Hotel, Waves, Compass, Cloud, Store, Sliders, MapPin } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, Hotel, Waves, Compass, Cloud, Store, Sliders, MapPin, Search, Rocket, GraduationCap, Video, Trophy } from "lucide-react";
 import { AnimatedBackground } from "./AnimatedBackground";
 import { Reveal, SectionLabel, FeatureCard, SECTION, INNER } from "./Primitives";
 import { PricingSection } from "./PricingSection";
@@ -285,150 +285,198 @@ export const LaMecLanding = () => {
       </section>
 
       {/* ───────── ATTRACTIVITÉ & AUTORITÉ ───────── */}
-      <section className={`relative ${SECTION}`}>
+      <section className={`relative ${SECTION} py-12 sm:py-16`}>
         <div className={INNER}>
-          <Reveal className="flex flex-col gap-4">
-            <span className="inline-block bg-amber-100/80 text-amber-800 border border-amber-200/50 rounded-lg px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider w-fit">
-              Attractivité &amp; Autorité
-            </span>
-            <h2 className="text-[clamp(28px,4.5vw,52px)] font-bold leading-[1.1] text-brand-navy">
-              L'ALLURE D'UNE ENSEIGNE D'EXCEPTION
-            </h2>
-          </Reveal>
-
-          <Reveal delay={1} className="mt-14 grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] items-center">
             {/* Left Content */}
             <div>
-              <h3 className="text-[clamp(20px,2.5vw,28px)] font-bold text-brand-navy mb-4">
-                Sublimez Votre Spot Touristique
-              </h3>
-              <p className="text-brand-navy/80 text-sm sm:text-base leading-relaxed mb-6">
-                Le coup de cœur d'un voyageur s'établit sur la preuve visuelle. Nous mettons en œuvre nos compétences de captation artistique de calibre international.
-              </p>
-              <div className="rounded-2xl bg-brand-green-pale/40 border border-brand-green/10 p-5">
-                <p className="text-brand-navy/85 text-sm sm:text-base leading-relaxed">
-                  <strong className="font-semibold text-brand-navy">Contenu RAW &amp; Drone 4K :</strong> Shootings aériens professionnels, angles intérieurs de caractère et clips montés spécifiquement pour déclencher l'acte d'achat sur vos réseaux.
+              <Reveal>
+                <div className="inline-flex items-center gap-2 rounded-lg bg-amber-50 border border-amber-200/50 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-amber-800">
+                  <Trophy className="h-3.5 w-3.5 text-amber-500 fill-amber-500/20" />
+                  Attractivité &amp; Autorité
+                </div>
+                
+                <h2 className="mt-6 text-[clamp(24px,3.5vw,36px)] font-bold uppercase tracking-wide text-brand-navy leading-tight">
+                  L'ALLURE D'UNE <br />
+                  ENSEIGNE <span className="text-amber-500">D'EXCEPTION</span>
+                </h2>
+                
+                <h3 className="text-lg sm:text-xl font-bold text-brand-navy mt-6 mb-3">
+                  Sublimez Votre Spot Touristique
+                </h3>
+                <p className="text-brand-navy/70 text-sm sm:text-base leading-relaxed mb-6">
+                  Le coup de cœur d'un voyageur s'établit sur la preuve visuelle. Nous mettons en œuvre notre compétence de création artistique de classe internationale.
                 </p>
-              </div>
+                
+                <div className="flex gap-4 items-center rounded-2xl bg-amber-50/70 border border-amber-500/10 p-5">
+                  <div className="shrink-0 flex h-12 w-12 items-center justify-center rounded-full bg-amber-100 text-amber-500">
+                    <Video className="h-6 w-6 fill-amber-500/20" />
+                  </div>
+                  <p className="text-brand-navy/75 text-xs sm:text-sm leading-relaxed">
+                    <strong className="font-semibold text-brand-navy">Contenus RVA &amp; Drone 4K :</strong> Shootings aériens professionnels, images vitrines de caractère et clips montés spécifiquement pour déclencher l'acte d'achat sur vos réseaux.
+                  </p>
+                </div>
+              </Reveal>
             </div>
 
-            {/* Right Image */}
-            <div className="relative overflow-hidden rounded-[28px] border border-brand-navy/[0.08] bg-white p-2 shadow-xl">
-              <img
-                src="/drone_aerial_resort.png"
-                alt="L'ALLURE D'UNE ENSEIGNE D'EXCEPTION"
-                className="w-full h-auto rounded-[24px] object-cover"
-              />
+            {/* Right Image with dotted decoration */}
+            <div className="relative">
+              {/* Top Right Dot Grid Decoration */}
+              <div className="absolute -top-6 -right-6 -z-10 w-32 h-32 bg-[radial-gradient(#f59e0b_1.5px,transparent_1.5px)] [background-size:12px_12px] opacity-25" />
+              
+              <div className="relative overflow-hidden rounded-3xl bg-white shadow-xl">
+                <img
+                  src="/drone_aerial_resort.png"
+                  alt="L'ALLURE D'UNE ENSEIGNE D'EXCEPTION"
+                  className="w-full h-auto rounded-3xl object-cover"
+                />
+              </div>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
       {/* ───────── PLAN DE DÉPLOIEMENT STRATÉGIQUE ───────── */}
-      <section className={`relative ${SECTION} bg-gradient-to-b from-transparent via-brand-green-pale/10 to-transparent`}>
+      <section className={`relative ${SECTION} py-12 sm:py-16 bg-gradient-to-b from-transparent via-gray-50/30 to-transparent`}>
         <div className={INNER}>
           <Reveal>
-            <div className="flex items-center gap-4">
-              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
-              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
-                Plan de Déploiement Stratégique
-              </h2>
+            <div className="rounded-[28px] bg-white ring-1 ring-black/[0.05] shadow-lg p-6 sm:p-10 lg:p-12">
+              <div className="text-center">
+                <h2 className="text-[clamp(18px,2.5vw,24px)] font-bold uppercase tracking-[0.15em] text-brand-navy">
+                  Plan de Déploiement Stratégique
+                </h2>
+                <div className="mx-auto mt-4 w-12 h-1 bg-amber-500 rounded-full" />
+              </div>
+
+              {/* Desktop Timeline */}
+              <div className="hidden md:block relative mt-16">
+                {/* Horizontal Dashed Line */}
+                <div className="absolute top-6 left-[12.5%] right-[12.5%] h-px border-t border-dashed border-amber-400 z-0" />
+
+                <div className="grid grid-cols-4 gap-4 relative z-10">
+                  {[
+                    {
+                      w: "S1 – S2",
+                      icon: Search,
+                      desc: "Audit UX, audit sémantique de l'audience et lancement de l'étude d'objets."
+                    },
+                    {
+                      w: "S3 – S5",
+                      icon: (props) => (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+                          <circle cx="12" cy="12" r="2.5" />
+                          <line x1="12" y1="9.5" x2="12" y2="4.5" />
+                          <line x1="12" y1="14.5" x2="12" y2="19.5" />
+                          <line x1="9.5" y1="12" x2="4.5" y2="12" />
+                          <line x1="14.5" y1="12" x2="19.5" y2="12" />
+                          <path d="M10 4.5h4" />
+                          <path d="M10 19.5h4" />
+                          <path d="M4.5 10v4" />
+                          <path d="M19.5 10v4" />
+                        </svg>
+                      ),
+                      desc: "Shooting drone & sol, développement et fiabilité de l'image et enrichissement API et vitrines."
+                    },
+                    {
+                      w: "S6 – S7",
+                      icon: Rocket,
+                      desc: "Déploiement des VPN dédiés et intégrations des paiements et tests de reconnaissance des APIs."
+                    },
+                    {
+                      w: "S8",
+                      icon: GraduationCap,
+                      desc: "Go-Live global, formation des équipes locales et révision finale des APIs."
+                    }
+                  ].map((step, idx) => {
+                    const IconComponent = step.icon;
+                    return (
+                      <Reveal key={step.w} delay={idx} className="flex flex-col items-center">
+                        {/* Circle marker */}
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white border border-amber-500 text-amber-500 shadow-sm hover:scale-110 transition-transform duration-200 cursor-default">
+                          <IconComponent className="h-6 w-6" />
+                        </div>
+                        
+                        {/* Title */}
+                        <div className="mt-4 text-sm font-bold text-amber-500 tracking-wider">
+                          {step.w}
+                        </div>
+                        
+                        {/* Card */}
+                        <div className="mt-4 w-full rounded-xl bg-white p-4 text-center ring-1 ring-black/[0.04] shadow-sm flex flex-col justify-center min-h-[110px] hover:shadow-md transition-shadow">
+                          <p className="text-brand-navy/70 text-xs sm:text-sm leading-relaxed">
+                            {step.desc}
+                          </p>
+                        </div>
+                      </Reveal>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Mobile Vertical Timeline */}
+              <div className="block md:hidden relative mt-12 pl-6">
+                {/* Vertical Dashed Line */}
+                <div className="absolute left-6 top-6 bottom-6 w-px border-l border-dashed border-amber-400 z-0" />
+
+                <div className="space-y-6 relative z-10">
+                  {[
+                    {
+                      w: "S1 – S2",
+                      icon: Search,
+                      desc: "Audit UX, audit sémantique de l'audience et lancement de l'étude d'objets."
+                    },
+                    {
+                      w: "S3 – S5",
+                      icon: (props) => (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+                          <circle cx="12" cy="12" r="2.5" />
+                          <line x1="12" y1="9.5" x2="12" y2="4.5" />
+                          <line x1="12" y1="14.5" x2="12" y2="19.5" />
+                          <line x1="9.5" y1="12" x2="4.5" y2="12" />
+                          <line x1="14.5" y1="12" x2="19.5" y2="12" />
+                          <path d="M10 4.5h4" />
+                          <path d="M10 19.5h4" />
+                          <path d="M4.5 10v4" />
+                          <path d="M19.5 10v4" />
+                        </svg>
+                      ),
+                      desc: "Shooting drone & sol, développement et fiabilité de l'image et enrichissement API et vitrines."
+                    },
+                    {
+                      w: "S6 – S7",
+                      icon: Rocket,
+                      desc: "Déploiement des VPN dédiés et intégrations des paiements et tests de reconnaissance des APIs."
+                    },
+                    {
+                      w: "S8",
+                      icon: GraduationCap,
+                      desc: "Go-Live global, formation des équipes locales et révision finale des APIs."
+                    }
+                  ].map((step, idx) => {
+                    const IconComponent = step.icon;
+                    return (
+                      <Reveal key={step.w} delay={idx} className="flex gap-4 items-start">
+                        {/* Circle marker */}
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white border border-amber-500 text-amber-500 shadow-sm">
+                          <IconComponent className="h-6 w-6" />
+                        </div>
+                        
+                        {/* Card Content */}
+                        <div className="flex-1 rounded-xl bg-white p-4 ring-1 ring-black/[0.04] shadow-sm">
+                          <div className="text-sm font-bold text-amber-500 tracking-wider mb-1">
+                            {step.w}
+                          </div>
+                          <p className="text-brand-navy/70 text-xs sm:text-sm leading-relaxed">
+                            {step.desc}
+                          </p>
+                        </div>
+                      </Reveal>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </Reveal>
-
-          {/* Desktop Timeline */}
-          <div className="hidden md:block relative mt-24 pb-20">
-            {/* Horizontal Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 border-t-2 border-dashed border-amber-400/80 -translate-y-1/2 z-0" />
-
-            <div className="grid grid-cols-4 gap-6 relative z-10">
-              
-              {/* S1 - S2 (Below Line) */}
-              <div className="flex flex-col items-center">
-                <div className="h-32" /> {/* empty space above the line */}
-                {/* Circle marker */}
-                <div className="w-6 h-6 rounded-full border-4 border-amber-400 bg-white shadow-md flex items-center justify-center my-4 animate-pulse" />
-                {/* Card */}
-                <Reveal delay={0} className="w-full">
-                  <div className="glass-card rounded-2xl p-5 ring-1 ring-black/5 shadow-lg text-center min-h-[140px] hover:scale-[1.02] transition-transform">
-                    <div className="text-amber-500 font-bold text-sm mb-2">S1 – S2</div>
-                    <p className="text-brand-navy/80 text-xs sm:text-sm leading-relaxed">
-                      Audit UX, audit sémantique de l'audience et lancement de l'étude d'éligibilité.
-                    </p>
-                  </div>
-                </Reveal>
-              </div>
-
-              {/* S3 - S5 (Above Line) */}
-              <div className="flex flex-col items-center">
-                {/* Card */}
-                <Reveal delay={1} className="w-full">
-                  <div className="glass-card rounded-2xl p-5 ring-1 ring-black/5 shadow-lg text-center min-h-[140px] hover:scale-[1.02] transition-transform">
-                    <div className="text-amber-500 font-bold text-sm mb-2">S3 – S5</div>
-                    <p className="text-brand-navy/80 text-xs sm:text-sm leading-relaxed">
-                      Shootings drone &amp; sol, développement de l'agent IA, intégration et maquettage vitrines.
-                    </p>
-                  </div>
-                </Reveal>
-                {/* Circle marker */}
-                <div className="w-6 h-6 rounded-full border-4 border-amber-400 bg-white shadow-md flex items-center justify-center my-4 animate-pulse" />
-                <div className="h-32" /> {/* empty space below the line */}
-              </div>
-
-              {/* S6 - S7 (Below Line) */}
-              <div className="flex flex-col items-center">
-                <div className="h-32" />
-                {/* Circle marker */}
-                <div className="w-6 h-6 rounded-full border-4 border-amber-400 bg-white shadow-md flex items-center justify-center my-4 animate-pulse" />
-                {/* Card */}
-                <Reveal delay={2} className="w-full">
-                  <div className="glass-card rounded-2xl p-5 ring-1 ring-black/5 shadow-lg text-center min-h-[140px] hover:scale-[1.02] transition-transform">
-                    <div className="text-amber-500 font-bold text-sm mb-2">S6 – S7</div>
-                    <p className="text-brand-navy/80 text-xs sm:text-sm leading-relaxed">
-                      Déploiement des VPN d'équipe, chiffrement, synchronisation et raccordement des APIs.
-                    </p>
-                  </div>
-                </Reveal>
-              </div>
-
-              {/* S8 (Above Line) */}
-              <div className="flex flex-col items-center">
-                {/* Card */}
-                <Reveal delay={3} className="w-full">
-                  <div className="glass-card rounded-2xl p-5 ring-1 ring-black/5 shadow-lg text-center min-h-[140px] hover:scale-[1.02] transition-transform">
-                    <div className="text-amber-500 font-bold text-sm mb-2">S8</div>
-                    <p className="text-brand-navy/80 text-xs sm:text-sm leading-relaxed">
-                      Go-Live global, formation des équipes locales et livraison finale des actifs.
-                    </p>
-                  </div>
-                </Reveal>
-                {/* Circle marker */}
-                <div className="w-6 h-6 rounded-full border-4 border-amber-400 bg-white shadow-md flex items-center justify-center my-4 animate-pulse" />
-                <div className="h-32" />
-              </div>
-
-            </div>
-          </div>
-
-          {/* Mobile Vertical Timeline */}
-          <div className="block md:hidden relative mt-12 pl-8 border-l-2 border-dashed border-amber-400/80 space-y-8">
-            {[
-              { w: "S1 – S2", desc: "Audit UX, audit sémantique de l'audience et lancement de l'étude d'éligibilité." },
-              { w: "S3 – S5", desc: "Shootings drone & sol, développement de l'agent IA, intégration et maquettage vitrines." },
-              { w: "S6 – S7", desc: "Déploiement des VPN d'équipe, chiffrement, synchronisation et raccordement des APIs." },
-              { w: "S8", desc: "Go-Live global, formation des équipes locales et livraison finale des actifs." }
-            ].map((step, idx) => (
-              <Reveal key={step.w} delay={idx} className="relative">
-                {/* Bullet */}
-                <div className="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full border-4 border-amber-400 bg-white shadow-sm flex items-center justify-center" />
-                {/* Card */}
-                <div className="glass-card rounded-2xl p-5 ring-1 ring-black/5 shadow-lg">
-                  <div className="text-amber-500 font-bold text-sm mb-1">{step.w}</div>
-                  <p className="text-brand-navy/80 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
