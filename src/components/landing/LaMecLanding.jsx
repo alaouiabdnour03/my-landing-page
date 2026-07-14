@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowDown, ArrowRight, Check, Hotel, Waves, Compass, Cloud, Store, Sliders, MapPin, Search, Rocket, GraduationCap, Video, Trophy } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, Hotel, Waves, Compass, Cloud, Store, Sliders, MapPin, Search, Rocket, GraduationCap, Video, Trophy, Globe, Building, TrendingUp } from "lucide-react";
 import { AnimatedBackground } from "./AnimatedBackground";
 import { Reveal, SectionLabel, FeatureCard, SECTION, INNER } from "./Primitives";
 import { PricingSection } from "./PricingSection";
@@ -481,68 +481,114 @@ export const LaMecLanding = () => {
       </section>
 
       {/* ───────── MAXIMISEZ VOS MARGES ───────── */}
-      <section className={`relative ${SECTION}`}>
+      <section className={`relative ${SECTION} py-12 sm:py-16`}>
         <div className={INNER}>
           <Reveal>
-            <div className="flex items-center gap-4">
-              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
-              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
-                Maximisez Vos Marges : Le Match des Canaux
+            <div>
+              <h2 className="text-[clamp(24px,3.5vw,36px)] font-bold uppercase tracking-wide text-brand-navy leading-tight">
+                MAXIMISEZ VOS MARGES : <br className="hidden sm:inline" />
+                <span className="text-amber-500">LE MATCH DES CANAUX</span>
               </h2>
+              <div className="mt-4 w-12 h-1 bg-amber-500 rounded-full" />
             </div>
           </Reveal>
 
-          <div className="mt-14 max-w-4xl mx-auto space-y-6">
-            {/* Bar 1 */}
-            <Reveal delay={0} className="space-y-2">
-              <div className="flex justify-between items-center text-sm font-semibold text-brand-navy">
-                <span>Canal Connecté Direct (Notre Solution)</span>
-              </div>
-              <div className="w-full bg-brand-navy/[0.06] rounded-full h-10 overflow-hidden ring-1 ring-black/5 relative">
-                <div 
-                  className="bg-gradient-to-r from-brand-navy via-brand-green-deep to-brand-green h-full rounded-full flex items-center px-4 transition-all duration-1000 shadow-inner" 
-                  style={{ width: "97%" }}
-                >
-                  <span className="text-white text-xs sm:text-sm font-bold">97% Marge Conservée</span>
+          <div className="mt-14 max-w-5xl space-y-10 sm:space-y-12">
+            
+            {/* Canal 1 */}
+            <Reveal delay={0}>
+              <div className="flex flex-col md:flex-row md:items-center gap-6 w-full">
+                {/* Icon + text */}
+                <div className="flex items-center gap-4 md:w-[320px] shrink-0">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-500">
+                    <Globe className="h-7 w-7 stroke-[1.5]" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-brand-navy">Canal Connecté Direct</h3>
+                    <p className="text-brand-navy/60 text-sm mt-0.5">(Votre Solution)</p>
+                  </div>
+                </div>
+                {/* Bar */}
+                <div className="flex-1 w-full hidden md:block">
+                  <div className="h-4 w-full rounded-full bg-amber-50 overflow-hidden">
+                    <div className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-400 w-[90%] shadow-[0_0_15px_rgba(245,158,11,0.5)]" />
+                  </div>
+                </div>
+                {/* Percentage */}
+                <div className="md:w-[220px] shrink-0 md:text-right">
+                  <span className="text-xl sm:text-2xl font-bold text-amber-500">90%</span>
+                  <span className="text-sm font-semibold text-brand-navy ml-2">Marge Conservée</span>
                 </div>
               </div>
             </Reveal>
 
-            {/* Bar 2 */}
-            <Reveal delay={1} className="space-y-2">
-              <div className="flex justify-between items-center text-sm font-semibold text-brand-navy">
-                <span>Canal Hybride (Acquisition Publique)</span>
-              </div>
-              <div className="w-full bg-brand-navy/[0.06] rounded-full h-10 overflow-hidden ring-1 ring-black/5 relative">
-                <div 
-                  className="bg-gradient-to-r from-[#1b2a4a] to-[#c29c66] h-full rounded-full flex items-center px-4 transition-all duration-1000" 
-                  style={{ width: "95%" }}
-                >
-                  <span className="text-white text-xs sm:text-sm font-bold">95% Marge Conservée</span>
+            {/* Canal 2 */}
+            <Reveal delay={1}>
+              <div className="flex flex-col md:flex-row md:items-center gap-6 w-full">
+                {/* Icon + text */}
+                <div className="flex items-center gap-4 md:w-[320px] shrink-0">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-500">
+                    <Building className="h-7 w-7 stroke-[1.5]" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-brand-navy">Canal Hybride</h3>
+                    <p className="text-brand-navy/60 text-sm mt-0.5">(Opération Partagée)</p>
+                  </div>
+                </div>
+                {/* Bar */}
+                <div className="flex-1 w-full hidden md:block">
+                  <div className="h-4 w-full rounded-full bg-amber-50 overflow-hidden">
+                    <div className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-400 w-[60%] shadow-[0_0_15px_rgba(245,158,11,0.5)]" />
+                  </div>
+                </div>
+                {/* Percentage */}
+                <div className="md:w-[220px] shrink-0 md:text-right">
+                  <span className="text-xl sm:text-2xl font-bold text-amber-500">60%</span>
+                  <span className="text-sm font-semibold text-brand-navy ml-2">Marge Conservée</span>
                 </div>
               </div>
             </Reveal>
 
-            {/* Bar 3 */}
-            <Reveal delay={2} className="space-y-2">
-              <div className="flex justify-between items-center text-sm font-semibold text-brand-navy">
-                <span>Canal OTA Classique (Booking, Expedia, Airbnb)</span>
-              </div>
-              <div className="w-full bg-brand-navy/[0.06] rounded-full h-10 overflow-hidden ring-1 ring-black/5 relative">
-                <div 
-                  className="bg-gradient-to-r from-rose-500 to-red-600 h-full rounded-full flex items-center px-4 transition-all duration-1000" 
-                  style={{ width: "75%" }}
-                >
-                  <span className="text-white text-xs sm:text-sm font-bold">75% Marge Conservée (15-25% de frais)</span>
+            {/* Canal 3 */}
+            <Reveal delay={2}>
+              <div className="flex flex-col md:flex-row md:items-center gap-6 w-full">
+                {/* Icon + text */}
+                <div className="flex items-center gap-4 md:w-[320px] shrink-0">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-500">
+                    <TrendingUp className="h-7 w-7 stroke-[1.5]" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-brand-navy">Canal OTA Classique</h3>
+                    <p className="text-brand-navy/60 text-sm mt-0.5">(Booking, Expedia, Airbnb)</p>
+                  </div>
+                </div>
+                {/* Bar */}
+                <div className="flex-1 w-full hidden md:block">
+                  <div className="h-4 w-full rounded-full bg-amber-50 overflow-hidden">
+                    <div className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-400 w-[70%] shadow-[0_0_15px_rgba(245,158,11,0.5)]" />
+                  </div>
+                </div>
+                {/* Percentage */}
+                <div className="md:w-[220px] shrink-0 md:text-right flex flex-col justify-center">
+                  <div>
+                    <span className="text-xl sm:text-2xl font-bold text-amber-500">70%</span>
+                    <span className="text-sm font-semibold text-brand-navy ml-2">Marge Conservée</span>
+                  </div>
+                  <div className="text-xs text-brand-navy/70 mt-0.5 md:mr-[30px]">(15-25% de frais)</div>
                 </div>
               </div>
             </Reveal>
 
-            {/* Bottom italic quote */}
-            <Reveal delay={3} className="pt-6 text-center">
-              <p className="text-sm italic text-brand-navy/60 leading-relaxed max-w-2xl mx-auto">
-                En redirigeant seulement 40% de vos réservations vers vos vitrines propriétaires d'acquisition, vous augmentez votre rentabilité nette de 12% dès la première saison.
-              </p>
+            {/* Bottom Callout Box */}
+            <Reveal delay={3} className="pt-8">
+              <div className="rounded-2xl bg-[#fffaf5] p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 max-w-5xl mx-auto shadow-sm">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-amber-500 text-amber-500">
+                  <TrendingUp className="h-7 w-7" />
+                </div>
+                <p className="text-brand-navy/80 text-sm sm:text-base leading-relaxed pt-1 text-center sm:text-left">
+                  En privilégiant vos canaux directs, vous récupérez jusqu'à <strong className="text-amber-500 font-bold">25% de revenus supplémentaires</strong> à chaque vente et renforcez votre rentabilité entre <strong className="text-amber-500 font-bold">10%</strong> dès la première saison.
+                </p>
+              </div>
             </Reveal>
           </div>
         </div>
