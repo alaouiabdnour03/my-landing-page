@@ -59,12 +59,10 @@ export const LaMecLanding = () => {
 
           {/* Contact Bar */}
           <Reveal delay={6} className="mt-10">
-            <div className="inline-flex items-center gap-3 sm:gap-5 rounded-xl bg-brand-navy/[0.07] backdrop-blur-sm px-5 py-3 text-sm">
-              <span className="font-bold text-brand-navy tracking-wide uppercase text-xs sm:text-sm">HAKIMI IBRAHIMI</span>
-              <span className="h-4 w-px bg-brand-navy/20" />
-              <span className="text-brand-navy/60 text-xs sm:text-sm">Manager - Associé</span>
-              <span className="h-4 w-px bg-brand-navy/20 hidden sm:block" />
-              <a href="mailto:contact@lamecconseil.com" className="text-brand-navy/60 text-xs sm:text-sm hover:text-amber-500 transition-colors">contact@lamecconseil.com</a>
+            <div className="inline-flex items-center gap-3 sm:gap-5 rounded-xl bg-brand-navy/[0.07] backdrop-blur-sm px-6 py-3 text-sm">
+              <a href="mailto:contact@lamecconseil.com" className="font-semibold tracking-wide text-brand-navy/80 text-xs sm:text-sm hover:text-amber-500 transition-colors">
+                contact@lamecconseil.com
+              </a>
             </div>
           </Reveal>
 
@@ -172,10 +170,10 @@ export const LaMecLanding = () => {
           <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] items-center">
             {/* Left Content */}
             <div>
-              <div className="w-12 h-1 bg-amber-500 rounded-full mb-6" />
-              <h2 className="text-[clamp(24px,3.5vw,36px)] font-bold uppercase tracking-wide text-brand-navy leading-tight">
-                Plateformes d'Animation <br />
-                <span className="text-amber-500">Prêtes à Vendre</span>
+              <SectionLabel>PLATEFORMES</SectionLabel>
+              <h2 className="mt-6 font-bold leading-[1.05] text-[clamp(32px,4.5vw,56px)] tracking-tight text-brand-navy">
+                01. Plateformes d'Animation <br />
+                <span className="brand-gradient-text">Prêtes à Vendre</span>
               </h2>
               
               <h3 className="text-lg sm:text-xl font-bold text-brand-navy mt-6 mb-3">
@@ -299,14 +297,10 @@ export const LaMecLanding = () => {
             {/* Left Content */}
             <div>
               <Reveal>
-                <div className="inline-flex items-center gap-2 rounded-lg bg-amber-50 border border-amber-200/50 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-amber-800">
-                  <Trophy className="h-3.5 w-3.5 text-amber-500 fill-amber-500/20" />
-                  Attractivité &amp; Autorité
-                </div>
-                
-                <h2 className="mt-6 text-[clamp(24px,3.5vw,36px)] font-bold uppercase tracking-wide text-brand-navy leading-tight">
-                  L'ALLURE D'UNE <br />
-                  ENSEIGNE <span className="text-amber-500">D'EXCEPTION</span>
+                <SectionLabel>ATTRACTIVITÉ & AUTORITÉ</SectionLabel>
+                <h2 className="mt-6 font-bold leading-[1.05] text-[clamp(32px,4.5vw,56px)] tracking-tight text-brand-navy">
+                  02. L'Allure d'une Enseigne<br />
+                  <span className="brand-gradient-text">D'Exception</span>
                 </h2>
                 
                 <h3 className="text-lg sm:text-xl font-bold text-brand-navy mt-6 mb-3">
@@ -349,11 +343,12 @@ export const LaMecLanding = () => {
         <div className={INNER}>
           <Reveal>
             <div className="rounded-[28px] bg-white ring-1 ring-black/[0.05] shadow-lg p-6 sm:p-10 lg:p-12">
-              <div className="text-center">
-                <h2 className="text-[clamp(18px,2.5vw,24px)] font-bold uppercase tracking-[0.15em] text-brand-navy">
-                  Plan de Déploiement Stratégique
+              <div className="flex flex-col items-center text-center">
+                <SectionLabel>MÉTHODOLOGIE</SectionLabel>
+                <h2 className="mt-6 font-bold leading-[1.05] text-[clamp(32px,4.5vw,56px)] tracking-tight text-brand-navy">
+                  03. Plan de Déploiement<br />
+                  <span className="brand-gradient-text">Stratégique</span>
                 </h2>
-                <div className="mx-auto mt-4 w-12 h-1 bg-amber-500 rounded-full" />
               </div>
 
               {/* Desktop Timeline */}
@@ -492,13 +487,13 @@ export const LaMecLanding = () => {
       <section className={`relative ${SECTION} py-12 sm:py-16`}>
         <div className={INNER}>
           <Reveal>
-            <div>
-              <h2 className="text-[clamp(24px,3.5vw,36px)] font-bold uppercase tracking-wide text-brand-navy leading-tight">
-                MAXIMISEZ VOS MARGES : <br className="hidden sm:inline" />
-                <span className="text-amber-500">LE MATCH DES CANAUX</span>
-              </h2>
-              <div className="mt-4 w-12 h-1 bg-amber-500 rounded-full" />
-            </div>
+              <div className="flex flex-col items-start lg:items-center lg:text-center max-w-[900px] lg:mx-auto">
+                <SectionLabel>NOS RÉSULTATS</SectionLabel>
+                <h2 className="mt-6 font-bold leading-[1.05] text-[clamp(32px,4.5vw,56px)] tracking-tight text-brand-navy">
+                  04. Maximisez Vos Marges<br />
+                  <span className="brand-gradient-text">Le Match des Canaux</span>
+                </h2>
+              </div>
           </Reveal>
 
           <div className="mt-14 max-w-5xl space-y-10 sm:space-y-12">

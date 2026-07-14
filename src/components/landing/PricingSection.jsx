@@ -1,6 +1,6 @@
 import React from "react";
 import { Monitor, Rocket, Lightbulb, CheckCircle2 } from "lucide-react";
-import { Reveal, SECTION, INNER } from "./Primitives";
+import { Reveal, SectionLabel, SECTION, INNER } from "./Primitives";
 
 export const PricingSection = () => {
   return (
@@ -42,13 +42,10 @@ export const PricingSection = () => {
           {/* Right Column: Headers + Table Card */}
           <div className="flex flex-col gap-8">
             <Reveal delay={1}>
-              <h3 className="text-xs sm:text-sm font-bold text-amber-500 uppercase tracking-widest mb-4 flex flex-col gap-2">
-                NOS OFFRES
-                <div className="w-8 h-1 bg-amber-500 rounded-full" />
-              </h3>
-              <h2 className="mt-4 text-[clamp(26px,3.5vw,36px)] font-bold leading-tight tracking-tight text-brand-navy max-w-2xl">
-                Bénéficiez d'un reste à charge de 10% <br className="hidden sm:block" />
-                <span className="text-amber-500">grâce à notre étude d'éligibilité.</span>
+              <SectionLabel>NOS OFFRES</SectionLabel>
+              <h2 className="mt-6 text-[clamp(26px,3.5vw,36px)] font-bold leading-tight tracking-tight text-brand-navy max-w-2xl">
+                05. Bénéficiez d'un reste à charge de 10% <br className="hidden sm:block" />
+                <span className="brand-gradient-text">grâce à notre étude d'éligibilité.</span>
               </h2>
               <p className="mt-4 max-w-xl text-sm sm:text-base text-brand-navy/70 leading-relaxed">
                 Prestations et solutions subventionnées à hauteur de 90% pour accélérer votre transition numérique avec notre cabinet partenaire.
