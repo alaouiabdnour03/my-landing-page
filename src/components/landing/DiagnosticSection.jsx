@@ -95,25 +95,9 @@ export const DiagnosticSection = () => {
   const submit = async (e) => {
     e.preventDefault();
 
-    // Vercel serverless backend URL for Brevo (same domain)
-    const BREVO_PROXY_URL = "/api/submit";
-
-    const formData = {
-      raisonSociale,
-      ice,
-      cnssEffectif,
-      caAnnuel,
-      activities: selectedActivities.join(", ") || "Aucune",
-      needs: selectedNeeds.join(", ") || "Aucun",
-      pack: selectedPack || "Aucun",
-      email,
-      phone,
-    };
-
-    // Run both requests in parallel
-    const results = await Promise.allSettled([
-      // 1. FormSubmit — sends email notification to your Gmail
-      fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
+    try {
+      // 1. Notification par email via FormSubmit
+      const formRes = await fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -122,36 +106,19 @@ export const DiagnosticSection = () => {
           "ICE (Identifiant Fiscal)": ice,
           "N° CNSS & Effectif": cnssEffectif,
           "Tranche CA Annuel": caAnnuel,
-          "Typologie de l'activité": formData.activities,
-          "Besoins immédiats & prioritaires": formData.needs,
-          "Pack Sélectionné": formData.pack,
+          "Typologie de l'activité": selectedActivities.join(", ") || "Aucune",
+          "Besoins immédiats & prioritaires": selectedNeeds.join(", ") || "Aucun",
+          "Pack Sélectionné": selectedPack || "Aucun",
           "Email": email,
           "Téléphone": phone,
         }),
-      }).then(async (res) => {
-        const data = await res.json();
-        console.log("✅ FormSubmit response:", data);
-        return data;
-      }),
+      });
 
-      // 2. Brevo — create contact via Vercel serverless proxy
-      fetch(BREVO_PROXY_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      }).then(async (res) => {
-        const data = await res.json();
-        console.log("✅ Brevo response:", data);
-        return data;
-      }),
-    ]);
-
-    // Log any failures
-    results.forEach((r, i) => {
-      if (r.status === "rejected") {
-        console.error(`❌ Request ${i + 1} failed:`, r.reason);
-      }
-    });
+      const data = await formRes.json();
+      console.log("✅ FormSubmit response:", data);
+    } catch (err) {
+      console.error("❌ FormSubmit failed:", err);
+    }
 
     setSent(true);
   };
