@@ -135,6 +135,8 @@ export const DiagnosticSection = () => {
     const uniqueName = `${Date.now()}_${cleanName}`;
     const uploadUrl = `${SUPABASE_URL}/storage/v1/object/documents/${uniqueName}`;
 
+    console.log("📤 Uploading to:", uploadUrl);
+
     const response = await fetch(uploadUrl, {
       method: "POST",
       headers: {
@@ -146,8 +148,8 @@ export const DiagnosticSection = () => {
 
     if (!response.ok) {
       const errText = await response.text();
-      console.error("Supabase upload error:", errText);
-      throw new Error(`Échec de l'upload de ${file.name}`);
+      console.error("Supabase upload error:", response.status, errText);
+      throw new Error(`[${response.status}] ${errText}`);
     }
 
     return `${SUPABASE_URL}/storage/v1/object/public/documents/${uniqueName}`;
@@ -205,7 +207,7 @@ export const DiagnosticSection = () => {
       }
     } catch (err) {
       console.error("❌ Submission failed:", err);
-      alert("Une erreur s'est produite lors du chargement des fichiers. Veuillez vérifier que votre stockage Supabase est correctement configuré.");
+      alert(`Erreur d'upload : ${err.message}\n\nVeuillez vérifier la configuration de votre bucket Supabase (doit être public et nommé "documents").`);
     } finally {
       setIsSubmitting(false);
     }
