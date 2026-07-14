@@ -157,6 +157,12 @@ export const DiagnosticSection = () => {
 
   const submit = async (e) => {
     e.preventDefault();
+
+    if (!fileRC) {
+      alert("Le Registre de commerce est obligatoire. Veuillez le joindre avant de soumettre.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -434,12 +440,12 @@ export const DiagnosticSection = () => {
                 <div className="pt-2">
                   <h3 className="text-base font-bold uppercase tracking-wider text-amber-500 mb-4 flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-amber-500" />
-                    6. Pièces jointes (Facultatif)
+                    6. Pièces jointes
                   </h3>
                   
                   <div className="space-y-4">
                     <FileInput label="Statuts de l'entreprise" file={fileStatuts} onChange={(e) => setFileStatuts(e.target.files[0])} />
-                    <FileInput label="Registre de commerce" file={fileRC} onChange={(e) => setFileRC(e.target.files[0])} />
+                    <FileInput label="Registre de commerce (Obligatoire)" file={fileRC} onChange={(e) => setFileRC(e.target.files[0])} />
                     <FileInput label="Régularité fiscale" file={fileFiscale} onChange={(e) => setFileFiscale(e.target.files[0])} />
                     <FileInput label="Régularité de soumission CNSS" file={fileCNSS} onChange={(e) => setFileCNSS(e.target.files[0])} />
                     <FileInput label="Bilan des 2 années passées" file={fileBilan} onChange={(e) => setFileBilan(e.target.files[0])} />
