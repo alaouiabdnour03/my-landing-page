@@ -68,9 +68,11 @@ const RadioOption = ({ label, checked, onChange, name }) => (
   </label>
 );
 
-const FileInput = ({ label, onChange, file }) => (
+const FileInput = ({ label, onChange, file, required }) => (
   <div className="flex flex-col gap-1.5">
-    <label className="text-sm font-medium text-brand-navy/80 block text-left">{label}</label>
+    <label className="text-sm font-medium text-brand-navy/80 block text-left">
+      {label} {required && <span className="text-red-500">*</span>}
+    </label>
     <div className="relative flex items-center">
       <input
         type="file"
@@ -80,7 +82,7 @@ const FileInput = ({ label, onChange, file }) => (
       />
       <div className={`w-full rounded-xl border px-4 py-2.5 text-sm transition-all flex items-center justify-between ${file ? 'bg-amber-500/10 border-amber-500/30' : 'bg-brand-bg border-brand-navy/[0.1] hover:bg-white'}`}>
         <span className={file ? 'text-brand-navy font-medium truncate max-w-[85%]' : 'text-brand-navy/40'}>
-          {file ? file.name : "Sélectionner un fichier (Optionnel)"}
+          {file ? file.name : (required ? "Sélectionner un fichier" : "Sélectionner un fichier (Optionnel)")}
         </span>
         <svg className={`w-4 h-4 shrink-0 ${file ? 'text-amber-600' : 'text-brand-navy/30'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           {file ? (
@@ -445,7 +447,7 @@ export const DiagnosticSection = () => {
                   
                   <div className="space-y-4">
                     <FileInput label="Statuts de l'entreprise" file={fileStatuts} onChange={(e) => setFileStatuts(e.target.files[0])} />
-                    <FileInput label="Registre de commerce (Obligatoire)" file={fileRC} onChange={(e) => setFileRC(e.target.files[0])} />
+                    <FileInput label="Registre de commerce" file={fileRC} onChange={(e) => setFileRC(e.target.files[0])} required />
                     <FileInput label="Régularité fiscale" file={fileFiscale} onChange={(e) => setFileFiscale(e.target.files[0])} />
                     <FileInput label="Régularité de soumission CNSS" file={fileCNSS} onChange={(e) => setFileCNSS(e.target.files[0])} />
                     <FileInput label="Bilan des 2 années passées" file={fileBilan} onChange={(e) => setFileBilan(e.target.files[0])} />
