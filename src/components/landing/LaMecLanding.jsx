@@ -110,38 +110,45 @@ export const LaMecLanding = () => {
       </section>
 
       {/* ───────── L'ÉCOSYSTÈME DE VENTE DIRECTE ───────── */}
-      <section className={`relative ${SECTION} bg-gradient-to-b from-transparent via-brand-green-pale/30 to-transparent`}>
+      <section className={`relative ${SECTION} py-12 sm:py-16 bg-gradient-to-b from-transparent via-gray-50/60 to-transparent`}>
         <div className={INNER}>
           <Reveal>
-            <div className="flex items-center gap-4">
-              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
-              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
-                L'Écosystème de Vente Directe Connecté
-              </h2>
-            </div>
+            <h2 className="text-center text-[clamp(16px,2.2vw,22px)] font-bold uppercase tracking-[0.15em] text-brand-navy">
+              L'Écosystème de Vente Directe Connecté
+            </h2>
           </Reveal>
 
-          <Reveal delay={1} className="mt-14 grid gap-6 md:grid-cols-2">
-            {/* Card 1 */}
-            <div className="glass-card rounded-[28px] p-8 ring-1 ring-black/[0.05] shadow-lg hover:-translate-y-1 transition-transform duration-300">
-              <h3 className="text-xl font-bold text-brand-navy mb-4">Interconnexion APIs Performante</h3>
-              <p className="text-brand-navy/75 text-sm leading-relaxed">
-                Nous intégrons vos calendriers de réservation et d'animation directement avec les plus grands moteurs et plateformes de distribution commerciale internationaux.
-              </p>
-              <p className="mt-4 text-brand-navy/75 text-sm leading-relaxed italic">
-                Votre inventaire physique se synchronise automatiquement pour éradiquer l'overbooking en moins de 60 secondes.
-              </p>
+          <Reveal delay={1} className="mt-10 grid gap-6 md:grid-cols-2">
+            {/* Card 1 — APIs */}
+            <div className="flex gap-5 rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-black/[0.06] shadow-md">
+              <div className="shrink-0 mt-1">
+                <img src="/SNYC IC.svg" alt="" className="h-12 w-12 object-contain" />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-brand-navy mb-3">Interconnexion APIs Performante</h3>
+                <p className="text-brand-navy/70 text-sm leading-relaxed">
+                  Nous intégrons vos canaux de réservation et d'animation directement avec les grandes plateformes de distribution connectée internationalement.
+                </p>
+                <p className="mt-3 text-brand-navy/70 text-sm leading-relaxed">
+                  Visez l'excellence technique et transformez décentralisément pour optimiser l'expérience et vos taux de succès.
+                </p>
+              </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="glass-card rounded-[28px] p-8 ring-1 ring-black/[0.05] shadow-lg hover:-translate-y-1 transition-transform duration-300">
-              <h3 className="text-xl font-bold text-brand-navy mb-4">Boutiques &amp; Vitrines Préétablies</h3>
-              <p className="text-brand-navy/75 text-sm leading-relaxed">
-                Nous déployons des vitrines digitales sur-mesure et des boutiques de commerce en ligne pour votre structure.
-              </p>
-              <p className="mt-4 text-brand-navy/75 text-sm leading-relaxed italic">
-                Vendez vos chambres, vos excursions, vos cours de surf ou votre matériel sans intermédiaire et encaissez directement.
-              </p>
+            {/* Card 2 — Boutiques */}
+            <div className="flex gap-5 rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-black/[0.06] shadow-md">
+              <div className="shrink-0 mt-1">
+                <img src="/SOLUTION ODOO IC.svg" alt="" className="h-12 w-12 object-contain" />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-brand-navy mb-3">Boutiques &amp; Vitrines Préétablies</h3>
+                <p className="text-brand-navy/70 text-sm leading-relaxed">
+                  Nous déployons des vitrines digitales sur-mesure et des boutiques de commerce en ligne pour votre structure.
+                </p>
+                <p className="mt-3 text-brand-navy/70 text-sm leading-relaxed">
+                  Mettez en avant l'essence unique de votre offre et offrez une interface claire, attractive et aide conversion.
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>
