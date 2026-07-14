@@ -95,51 +95,64 @@ export const DiagnosticSection = () => {
   const submit = async (e) => {
     e.preventDefault();
 
-    const BREVO_API_KEY = import.meta.env.VITE_BREVO_API_KEY;
-    const BREVO_LIST_ID = 4;
+    // Vercel serverless backend URL for Brevo
+    // Replace this with your actual Vercel deployment URL once deployed
+    const BREVO_PROXY_URL = "https://lamec-api.vercel.app/api/submit";
 
-    // 1. Notification par email via FormSubmit
-    fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        _subject: "📋 Formulaire d'Éligibilité — La MEC Conseils",
-        "Raison Sociale": raisonSociale,
-        "ICE (Identifiant Fiscal)": ice,
-        "N° CNSS & Effectif": cnssEffectif,
-        "Tranche CA Annuel": caAnnuel,
-        "Typologie de l'activité": selectedActivities.join(", ") || "Aucune",
-        "Besoins immédiats & prioritaires": selectedNeeds.join(", ") || "Aucun",
-        "Pack Sélectionné": selectedPack || "Aucun",
-        "Email": email,
-        "Téléphone": phone,
-      }),
-    }).catch(() => {});
+    const formData = {
+      raisonSociale,
+      ice,
+      cnssEffectif,
+      caAnnuel,
+      activities: selectedActivities.join(", ") || "Aucune",
+      needs: selectedNeeds.join(", ") || "Aucun",
+      pack: selectedPack || "Aucun",
+      email,
+      phone,
+    };
 
-    // 2. Ajout du contact dans Brevo
-    try {
-      await fetch("https://api.brevo.com/v3/contacts", {
+    // Run both requests in parallel
+    const results = await Promise.allSettled([
+      // 1. FormSubmit — sends email notification to your Gmail
+      fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
         method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "api-key": BREVO_API_KEY
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          email: email,
-          listIds: [BREVO_LIST_ID],
-          updateEnabled: true,
-          attributes: {
-            RAISON_SOCIALE: raisonSociale,
-            ICE: ice,
-            PHONE: phone,
-            CA_ANNUEL: caAnnuel
-          }
-        })
-      });
-    } catch (err) {
-      console.error("Erreur Brevo:", err);
-    }
+          _subject: "📋 Formulaire d'Éligibilité — La MEC Conseils",
+          "Raison Sociale": raisonSociale,
+          "ICE (Identifiant Fiscal)": ice,
+          "N° CNSS & Effectif": cnssEffectif,
+          "Tranche CA Annuel": caAnnuel,
+          "Typologie de l'activité": formData.activities,
+          "Besoins immédiats & prioritaires": formData.needs,
+          "Pack Sélectionné": formData.pack,
+          "Email": email,
+          "Téléphone": phone,
+        }),
+      }).then(async (res) => {
+        const data = await res.json();
+        console.log("✅ FormSubmit response:", data);
+        return data;
+      }),
+
+      // 2. Brevo — create contact via Vercel serverless proxy
+      fetch(BREVO_PROXY_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }).then(async (res) => {
+        const data = await res.json();
+        console.log("✅ Brevo response:", data);
+        return data;
+      }),
+    ]);
+
+    // Log any failures
+    results.forEach((r, i) => {
+      if (r.status === "rejected") {
+        console.error(`❌ Request ${i + 1} failed:`, r.reason);
+      }
+    });
 
     setSent(true);
   };
