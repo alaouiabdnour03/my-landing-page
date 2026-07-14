@@ -126,39 +126,74 @@ export const DiagnosticSection = () => {
     );
   };
 
+  const SUPABASE_URL = "https://whaackbwcuviosuulkoc.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_K1Pvu-Jnnej4msqPR3fH_g_w67z7RIx";
+
+  const uploadToSupabase = async (file) => {
+    if (!file) return null;
+    const cleanName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
+    const uniqueName = `${Date.now()}_${cleanName}`;
+    const uploadUrl = `${SUPABASE_URL}/storage/v1/object/documents/${uniqueName}`;
+
+    const response = await fetch(uploadUrl, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${SUPABASE_KEY}`,
+        "apikey": SUPABASE_KEY,
+        "Content-Type": file.type
+      },
+      body: file
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      console.error("Supabase upload error:", errText);
+      throw new Error(`Échec de l'upload de ${file.name}`);
+    }
+
+    return `${SUPABASE_URL}/storage/v1/object/public/documents/${uniqueName}`;
+  };
+
   const submit = async (e) => {
     e.preventDefault();
-    
     setIsSubmitting(true);
 
-    const formData = new FormData();
-    formData.append("access_key", "43f33592-ad19-442f-a18e-208a779f9a51");
-    formData.append("subject", "📋 Formulaire d'Éligibilité — La MEC Conseils");
-    formData.append("from_name", "La MEC Conseils Website");
-    formData.append("Raison Sociale", raisonSociale);
-    formData.append("ICE (Identifiant Fiscal)", ice);
-    formData.append("N° CNSS & Effectif", cnssEffectif);
-    formData.append("Tranche CA Annuel", caAnnuel);
-    formData.append("Email", email);
-    formData.append("Téléphone", phone);
-    formData.append("Typologie de l'activité", selectedActivities.join(", ") || "Aucune");
-    formData.append("Besoins immédiats & prioritaires", selectedNeeds.join(", ") || "Aucun");
-    formData.append("Pack Sélectionné", selectedPack || "Aucun");
-    formData.append("A un site web ?", hasWebsite || "Non précisé");
-    formData.append("Plateformes de vente", platforms || "Aucune");
-
-    // Append files if they exist
-    if (fileStatuts) formData.append("Statuts", fileStatuts);
-    if (fileRC) formData.append("Registre de Commerce", fileRC);
-    if (fileFiscale) formData.append("Régularité Fiscale", fileFiscale);
-    if (fileCNSS) formData.append("Régularité CNSS", fileCNSS);
-    if (fileBilan) formData.append("Bilan (2 années passées)", fileBilan);
-
     try {
-      // Send via Web3Forms with FormData for file support
+      // 1. Upload files to Supabase and get their public URLs
+      const [urlStatuts, urlRC, urlFiscale, urlCNSS, urlBilan] = await Promise.all([
+        uploadToSupabase(fileStatuts),
+        uploadToSupabase(fileRC),
+        uploadToSupabase(fileFiscale),
+        uploadToSupabase(fileCNSS),
+        uploadToSupabase(fileBilan)
+      ]);
+
+      // 2. Submit textual data and Supabase links to Web3Forms
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "43f33592-ad19-442f-a18e-208a779f9a51",
+          subject: "📋 Formulaire d'Éligibilité — La MEC Conseils",
+          from_name: "La MEC Conseils Website",
+          "Raison Sociale": raisonSociale,
+          "ICE (Identifiant Fiscal)": ice,
+          "N° CNSS & Effectif": cnssEffectif,
+          "Tranche CA Annuel": caAnnuel,
+          Email: email,
+          "Téléphone": phone,
+          "Typologie de l'activité": selectedActivities.join(", ") || "Aucune",
+          "Besoins immédiats & prioritaires": selectedNeeds.join(", ") || "Aucun",
+          "Pack Sélectionné": selectedPack || "Aucun",
+          "A un site web ?": hasWebsite || "Non précisé",
+          "Plateformes de vente": platforms || "Aucune",
+          // Links to files
+          "Lien Statuts": urlStatuts || "Non fourni",
+          "Lien Registre de Commerce": urlRC || "Non fourni",
+          "Lien Régularité Fiscale": urlFiscale || "Non fourni",
+          "Lien Régularité CNSS": urlCNSS || "Non fourni",
+          "Lien Bilan 2 ans": urlBilan || "Non fourni"
+        })
       });
 
       const data = await res.json();
@@ -167,11 +202,11 @@ export const DiagnosticSection = () => {
       if (data.success) {
         setSent(true);
       } else {
-        alert("Erreur: " + (data.message || "Veuillez réessayer."));
+        alert("Erreur Web3Forms: " + (data.message || "Veuillez réessayer."));
       }
     } catch (err) {
       console.error("❌ Submission failed:", err);
-      alert("Une erreur s'est produite. Veuillez réessayer.");
+      alert("Une erreur s'est produite lors du chargement des fichiers. Veuillez vérifier que votre stockage Supabase est correctement configuré.");
     } finally {
       setIsSubmitting(false);
     }
