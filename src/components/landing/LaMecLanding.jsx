@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowDown, ArrowRight, Check, Hotel, Waves, Compass, Cloud, Store } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, Hotel, Waves, Compass, Cloud, Store, Sliders, MapPin } from "lucide-react";
 import { AnimatedBackground } from "./AnimatedBackground";
 import { Reveal, SectionLabel, FeatureCard, SECTION, INNER } from "./Primitives";
 import { PricingSection } from "./PricingSection";
@@ -159,31 +159,28 @@ export const LaMecLanding = () => {
       </section>
 
       {/* ───────── PLATEFORMES D'ANIMATION PRÊTES À VENDRE ───────── */}
-      <section className={`relative ${SECTION}`}>
+      <section className={`relative ${SECTION} py-12 sm:py-16`}>
         <div className={INNER}>
-          <Reveal>
-            <div className="flex items-center gap-4">
-              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
-              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
-                Plateformes d'Animation Prêtes à Vendre
-              </h2>
-            </div>
-          </Reveal>
-
-          <Reveal delay={1} className="mt-14 grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] items-center">
             {/* Left Content */}
             <div>
-              <h3 className="text-[clamp(20px,2.5vw,28px)] font-bold text-brand-navy mb-4">
+              <div className="w-12 h-1 bg-amber-500 rounded-full mb-6" />
+              <h2 className="text-[clamp(24px,3.5vw,36px)] font-bold uppercase tracking-wide text-brand-navy leading-tight">
+                Plateformes d'Animation <br />
+                <span className="text-amber-500">Prêtes à Vendre</span>
+              </h2>
+              
+              <h3 className="text-lg sm:text-xl font-bold text-brand-navy mt-6 mb-3">
                 Une Expérience Client sans Friction
               </h3>
-              <p className="text-brand-navy/80 text-sm sm:text-base leading-relaxed mb-6">
-                Nos solutions unifient l'image et l'acte d'achat d'un prospect voyageur pour transformer l'intérêt en profit instantané :
+              <p className="text-brand-navy/70 text-sm sm:text-base leading-relaxed mb-6">
+                Nos solutions unifient l'image et l'acte d'achat d'un prospect voyageur pour transformer l'intention en profit instantané.
               </p>
               
               <ul className="space-y-4">
                 {[
                   {
-                    title: "Showrooms Web Préétablis",
+                    title: "Showrooms Web Prédéfinis",
                     desc: "Des vitrines esthétiques, fluides et optimisées pour le SEO et l'usage mobile."
                   },
                   {
@@ -192,12 +189,14 @@ export const LaMecLanding = () => {
                   },
                   {
                     title: "Passerelles de Paiement",
-                    desc: "Intégration locale et internationale pour un encaissement direct sur vos comptes."
+                    desc: "Intégration locale et internationale pour un encaissement direct sur votre compte."
                   }
                 ].map((item, i) => (
-                  <li key={item.title} className="flex items-start gap-3">
-                    <span className="text-amber-500 font-bold text-lg leading-none mt-0.5">✦</span>
-                    <p className="text-brand-navy/80 text-sm sm:text-base leading-relaxed">
+                  <li key={item.title} className="flex items-start gap-4">
+                    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-amber-500 text-amber-500 mt-1">
+                      <Check className="h-3 w-3 stroke-[3]" />
+                    </div>
+                    <p className="text-brand-navy/75 text-sm sm:text-base leading-relaxed">
                       <strong className="font-semibold text-brand-navy">{item.title} :</strong> {item.desc}
                     </p>
                   </li>
@@ -205,62 +204,81 @@ export const LaMecLanding = () => {
               </ul>
             </div>
 
-            {/* Right Image */}
-            <div className="relative overflow-hidden rounded-[28px] border border-brand-navy/[0.08] bg-white p-2 shadow-xl">
-              <img
-                src="/team_meeting.png"
-                alt="Une Expérience Client sans Friction"
-                className="w-full h-auto rounded-[24px] object-cover"
-              />
+            {/* Right Image with dotted decoration */}
+            <div className="relative">
+              {/* Top Right Dot Grid Decoration */}
+              <div className="absolute -top-6 -right-6 -z-10 w-32 h-32 bg-[radial-gradient(#f59e0b_1.5px,transparent_1.5px)] [background-size:12px_12px] opacity-25" />
+              {/* Bottom Left Dot Grid Decoration */}
+              <div className="absolute -bottom-6 -left-6 -z-10 w-32 h-32 bg-[radial-gradient(#f59e0b_1.5px,transparent_1.5px)] [background-size:12px_12px] opacity-25" />
+              
+              <div className="relative overflow-hidden rounded-3xl bg-white shadow-xl">
+                <img
+                  src="/team_meeting.png"
+                  alt="Une Expérience Client sans Friction"
+                  className="w-full h-auto rounded-3xl object-cover"
+                />
+              </div>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
       {/* ───────── SOLUTIONS ADAPTÉES À VOTRE SECTEUR ───────── */}
-      <section className={`relative ${SECTION} bg-gradient-to-b from-transparent via-brand-green-pale/20 to-transparent`}>
+      <section className={`relative ${SECTION} py-12 sm:py-16 bg-gradient-to-b from-transparent via-gray-50/40 to-transparent`}>
         <div className={INNER}>
           <Reveal>
-            <div className="flex items-center gap-4">
-              <div className="w-1 h-8 bg-amber-500 rounded-full shrink-0" />
-              <h2 className="text-[clamp(22px,3vw,32px)] font-bold uppercase tracking-wide text-brand-navy">
+            <div className="text-center">
+              <h2 className="text-[clamp(18px,2.5vw,24px)] font-bold uppercase tracking-[0.15em] text-brand-navy">
                 Solutions Adaptées à Votre Secteur
               </h2>
+              <div className="mx-auto mt-4 w-12 h-1 bg-amber-500 rounded-full" />
             </div>
           </Reveal>
 
-          <Reveal delay={1} className="mt-14 grid gap-6 md:grid-cols-3">
-            {/* Card 1 */}
-            <div className="glass-card rounded-[28px] p-7 ring-1 ring-black/[0.05] shadow-lg hover:-translate-y-1 transition-transform duration-300">
-              <div className="h-12 w-12 rounded-2xl bg-amber-100/80 text-amber-800 flex items-center justify-center mb-6">
-                <Hotel className="h-6 w-6" />
+          <Reveal delay={1} className="mt-12 grid gap-6 lg:grid-cols-3">
+            {/* Card 1 — Hébergements & Riads */}
+            <div className="flex gap-4 rounded-2xl bg-white p-6 sm:p-7 ring-1 ring-black/[0.06] shadow-md hover:-translate-y-1 transition-transform duration-300">
+              <div className="shrink-0">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-500 ring-1 ring-amber-500/10">
+                  <Hotel className="h-6 w-6 stroke-[1.5]" />
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-brand-navy mb-3">Hébergements &amp; Riads</h3>
-              <p className="text-brand-navy/75 text-sm leading-relaxed">
-                Vitrines de prestige, synchronisation multicanale et assistants conversationnels IA bilingues pour capter la clientèle d'affaires et de loisirs.
-              </p>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-brand-navy mb-2">Hébergements &amp; Riads</h3>
+                <p className="text-brand-navy/70 text-xs sm:text-sm leading-relaxed">
+                  Vitrines de prestige, centralisation multicanale et excellence commerciale via la liaison pour capter et fidéliser directeurs de talents.
+                </p>
+              </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="glass-card rounded-[28px] p-7 ring-1 ring-black/[0.05] shadow-lg hover:-translate-y-1 transition-transform duration-300">
-              <div className="h-12 w-12 rounded-2xl bg-amber-100/80 text-amber-800 flex items-center justify-center mb-6">
-                <Waves className="h-6 w-6" />
+            {/* Card 2 — Surf Camps & Loisirs */}
+            <div className="flex gap-4 rounded-2xl bg-white p-6 sm:p-7 ring-1 ring-black/[0.06] shadow-md hover:-translate-y-1 transition-transform duration-300">
+              <div className="shrink-0">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-500 ring-1 ring-amber-500/10">
+                  <Sliders className="h-6 w-6 stroke-[1.5]" />
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-brand-navy mb-3">Surf Camps &amp; Loisirs</h3>
-              <p className="text-brand-navy/75 text-sm leading-relaxed">
-                Vente de cours en ligne, gestion de stocks d'équipements, réservations de sessions et création de packages hybrides d'hébergement/sport.
-              </p>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-brand-navy mb-2">Surf Camps &amp; Loisirs</h3>
+                <p className="text-brand-navy/70 text-xs sm:text-sm leading-relaxed">
+                  Vente de cours à la carte, gestion de stocks d'équipements et coordination de sessions en direct via des espaces dynamiques et engageants.
+                </p>
+              </div>
             </div>
 
-            {/* Card 3 */}
-            <div className="glass-card rounded-[28px] p-7 ring-1 ring-black/[0.05] shadow-lg hover:-translate-y-1 transition-transform duration-300">
-              <div className="h-12 w-12 rounded-2xl bg-amber-100/80 text-amber-800 flex items-center justify-center mb-6">
-                <Compass className="h-6 w-6" />
+            {/* Card 3 — Agences & Excursions */}
+            <div className="flex gap-4 rounded-2xl bg-white p-6 sm:p-7 ring-1 ring-black/[0.06] shadow-md hover:-translate-y-1 transition-transform duration-300">
+              <div className="shrink-0">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-500 ring-1 ring-amber-500/10">
+                  <MapPin className="h-6 w-6 stroke-[1.5]" />
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-brand-navy mb-3">Agences &amp; Excursions</h3>
-              <p className="text-brand-navy/75 text-sm leading-relaxed">
-                Catalogues interactifs d'expériences, plannings dynamiques de guides, et devis personnalisés configurés pour un envoi automatique.
-              </p>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-brand-navy mb-2">Agences &amp; Excursions</h3>
+                <p className="text-brand-navy/70 text-xs sm:text-sm leading-relaxed">
+                  Catalogues interactifs d'expériences, plannings dynamiques des guides, et suivi personnalisés des réservations en temps réel.
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>
