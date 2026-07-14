@@ -92,35 +92,32 @@ export const DiagnosticSection = () => {
     );
   };
 
-  const submit = async (e) => {
+  const submit = (e) => {
     e.preventDefault();
-
-    try {
-      // 1. Notification par email via FormSubmit
-      const formRes = await fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: "📋 Formulaire d'Éligibilité — La MEC Conseils",
-          "Raison Sociale": raisonSociale,
-          "ICE (Identifiant Fiscal)": ice,
-          "N° CNSS & Effectif": cnssEffectif,
-          "Tranche CA Annuel": caAnnuel,
-          "Typologie de l'activité": selectedActivities.join(", ") || "Aucune",
-          "Besoins immédiats & prioritaires": selectedNeeds.join(", ") || "Aucun",
-          "Pack Sélectionné": selectedPack || "Aucun",
-          "Email": email,
-          "Téléphone": phone,
-        }),
-      });
-
-      const data = await formRes.json();
-      console.log("✅ FormSubmit response:", data);
-    } catch (err) {
-      console.error("❌ FormSubmit failed:", err);
-    }
-
+    
+    // Show success message immediately (optimistic UI)
     setSent(true);
+
+    // Send the email in the background
+    fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        _subject: "📋 Formulaire d'Éligibilité — La MEC Conseils",
+        "Raison Sociale": raisonSociale,
+        "ICE (Identifiant Fiscal)": ice,
+        "N° CNSS & Effectif": cnssEffectif,
+        "Tranche CA Annuel": caAnnuel,
+        "Typologie de l'activité": selectedActivities.join(", ") || "Aucune",
+        "Besoins immédiats & prioritaires": selectedNeeds.join(", ") || "Aucun",
+        "Pack Sélectionné": selectedPack || "Aucun",
+        "Email": email,
+        "Téléphone": phone,
+      }),
+    })
+    .then(res => res.json())
+    .then(data => console.log("✅ FormSubmit response:", data))
+    .catch(err => console.error("❌ FormSubmit failed:", err));
   };
 
   return (
