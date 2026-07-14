@@ -60,8 +60,12 @@ export const LaMecLanding = () => {
           {/* Contact Bar */}
           <Reveal delay={6} className="mt-10">
             <div className="inline-flex items-center gap-3 sm:gap-5 rounded-xl bg-brand-navy/[0.07] backdrop-blur-sm px-6 py-3 text-sm">
-              <a href="mailto:contact@lamecconseil.com" className="font-semibold tracking-wide text-brand-navy/80 text-xs sm:text-sm hover:text-amber-500 transition-colors">
-                contact@lamecconseil.com
+              <span className="font-bold text-brand-navy text-xs sm:text-sm tracking-widest uppercase">
+                Manager
+              </span>
+              <span className="w-px h-4 bg-brand-navy/20" />
+              <a href="mailto:Manger@lamec.ma" className="font-semibold tracking-wide text-brand-navy/80 text-xs sm:text-sm hover:text-amber-500 transition-colors">
+                Manger@lamec.ma
               </a>
             </div>
           </Reveal>
