@@ -80,6 +80,7 @@ export const DiagnosticSection = () => {
   const [phone, setPhone] = useState("");
   const [sent, setSent] = useState(false);
 
+
   const toggleActivity = (act) => {
     setSelectedActivities(prev =>
       prev.includes(act) ? prev.filter(a => a !== act) : [...prev, act]
@@ -95,15 +96,18 @@ export const DiagnosticSection = () => {
   const submit = (e) => {
     e.preventDefault();
     
-    // Show success message immediately (optimistic UI)
+    // Show success instantly — don't make user wait for FormSubmit server
     setSent(true);
 
-    // Send the email in the background
+    // Fire-and-forget: send in background
     fetch("https://formsubmit.co/ajax/alaouiabdnour03@gmail.com", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
         _subject: "📋 Formulaire d'Éligibilité — La MEC Conseils",
+        _captcha: "false",
+        _template: "table",
+        _replyto: email,
         "Raison Sociale": raisonSociale,
         "ICE (Identifiant Fiscal)": ice,
         "N° CNSS & Effectif": cnssEffectif,
@@ -115,9 +119,9 @@ export const DiagnosticSection = () => {
         "Téléphone": phone,
       }),
     })
-    .then(res => res.json())
-    .then(data => console.log("✅ FormSubmit response:", data))
-    .catch(err => console.error("❌ FormSubmit failed:", err));
+    .then(r => r.json())
+    .then(d => console.log("✅ FormSubmit:", d))
+    .catch(e => console.error("❌ FormSubmit:", e));
   };
 
   return (
@@ -316,9 +320,12 @@ export const DiagnosticSection = () => {
                   <div className="flex flex-col items-stretch sm:items-start gap-3">
                     <button
                       type="submit"
-                      className="group inline-flex items-center justify-center gap-4 rounded-full bg-brand-navy pl-8 pr-2 py-2 text-base font-semibold text-white shadow-[0_20px_50px_-15px_oklch(0.2_0.06_250/0.5)] transition-all hover:bg-amber-500 hover:text-white cursor-pointer w-full sm:w-auto"
+                      disabled={sent}
+                      className="group inline-flex items-center justify-center gap-4 rounded-full bg-brand-navy pl-8 pr-2 py-2 text-base font-semibold text-white shadow-[0_20px_50px_-15px_oklch(0.2_0.06_250/0.5)] transition-all hover:bg-amber-500 hover:text-white cursor-pointer w-full sm:w-auto disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      <span className="py-2">Valider mon dossier d'éligibilité</span>
+                      <span className="py-2">
+                        {sent ? "✓ Envoyé !" : "Valider mon dossier d'éligibilité"}
+                      </span>
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full ring-1 ring-white/30 transition-transform group-hover:translate-x-0.5 group-hover:ring-white/50">
                         <ArrowRight className="h-5 w-5" />
                       </span>
