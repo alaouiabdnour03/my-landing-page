@@ -6,6 +6,7 @@ import { Reveal, SectionLabel, FeatureCard, SECTION, INNER } from "./Primitives"
 import { PricingSection } from "./PricingSection";
 import { DiagnosticSection } from "./DiagnosticSection";
 import { FooterSection } from "./FooterSection";
+import { ServicesCarousel } from "./ServicesCarousel";
 
 import iconZero from "@/assets/icon-zero.svg";
 import iconTrending from "@/assets/icon-trending.png";
@@ -72,6 +73,9 @@ export const LaMecLanding = () => {
 
         </motion.div>
       </section>
+
+      {/* ───────── SERVICES CAROUSEL ───────── */}
+      <ServicesCarousel />
 
       {/* ───────── LE COÛT DE L'INACTION ───────── */}
       <section className={`relative ${SECTION} py-10 sm:py-14`}>
